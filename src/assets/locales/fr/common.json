@@ -1,0 +1,6 @@
+{
+    "followers": "Abonnés {{ count }}",
+    "actions": {
+        "follow": "suivre"
+    }
+}

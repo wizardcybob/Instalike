@@ -1,0 +1,6 @@
+{
+    "followers": "followers {{ count }}",
+    "actions": {
+        "follow": "follow"
+    }
+}
