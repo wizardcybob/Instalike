@@ -4,6 +4,7 @@ import InstalikeApi from "./instalikeApi";
 import instalikeApi from "./instalikeApi";
 import './i18n'
 import {useTranslation} from "react-i18next";
+import Language from './assets/enums/Language';
 
 function App() {
   //reduce
@@ -19,6 +20,25 @@ function App() {
   return (
     <div className="App">
       <p>{t('actions.follow')}</p>
+
+      <div className="flex gap-10">
+          <button
+            type="button"
+            onClick={() => {
+              i18n.changeLanguage(Language.EN);
+            }}
+          >
+            English
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              i18n.changeLanguage(Language.FR);
+            }}
+          >
+            Français
+          </button>
+        </div>
     </div>
   );
 }
