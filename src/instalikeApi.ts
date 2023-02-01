@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createInstalikeApi } from "@jmetterrothan/instalike";
+//import type { RootState } from "./redux/store";
 
 const instalikeApi = createInstalikeApi(
   axios.create({
