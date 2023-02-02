@@ -1,7 +1,8 @@
-import { applyMiddleware, combineReducers, createStore , Middleware } from "redux"; //createStore est déprécié mais fonctionne qnd même
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
-import instalikeApi from "../instalikeApi";
+import { applyMiddleware, combineReducers, createStore, Middleware } from 'redux'; //createstore est déprécié, mais fonctionne quand même
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+
+import instalikeApi from '../instalikeApi';
 
 const rootReducer = combineReducers({});
 
