@@ -2,10 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* GENERAL */
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .instalike_title {
     font-family: 'Billabong', sans-serif;
+}
+
+
+/* DISCOVER */
+.flex.justify-center.items-center.rounded-2xl.overflow-hidden.relative:hover .absolute {
+    visibility: visible;
+    opacity: 1;
+}
+  
+.absolute {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
 }
