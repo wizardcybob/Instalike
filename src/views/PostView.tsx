@@ -25,9 +25,9 @@ return <>
     <div className="max-w-[640px] mx-auto py-16 px-4">
       {/* A POST */}
       Post #{id}
-      <div className="rounded-xl overflow-hidden shadow-post shadow-gray-900 border-none">
+      <div className="rounded-xl overflow-hidden shadow-post shadow-gray-900 border-none bg-white">
         {/* HEADER POST */}
-        <div className="flex justify-between p-4 bg-white">
+        <div className="flex justify-between p-4">
           <div className="flex items-center gap-4">
             <div className="rounded-full overflow-hidden w-12 h-12">
               <img
@@ -53,7 +53,7 @@ return <>
             alt="" />
         </div>
         {/* BIO POST */}
-        <div className="p-4 bg-white">
+        <div className="p-4">
           <p className="text-red-500">Quo praesentium facilis voluptatibus consequatur.</p>
           <div className="flex mt-3 gap-2">
             <button type="button" className="px-4 py-1 bg-slate-400 rounded-full flex items-center gap-2">
@@ -67,7 +67,7 @@ return <>
           </div>
         </div>
         {/* WRITE A COMMENT POST */}
-        <div className="p-4 bg-white border-t-[0.8px]">
+        <div className="p-4 border-t-[0.8px]">
           <form action="" className="flex gap-4">
             <div>
               <div className="rounded-full overflow-hidden w-12 h-12">
@@ -84,7 +84,7 @@ return <>
           </form>
         </div>
         {/* COMMENTS POST -> à cacher s'il y en a pas */}
-        <div className="flex justify-between p-4 border-t-[0.8px] bg-white">
+        <div className="flex justify-between p-4 border-t-[0.8px]">
           <div className="flex items-center gap-4">
             <div className="rounded-full overflow-hidden w-8 h-8">
               <img
