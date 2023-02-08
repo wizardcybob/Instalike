@@ -14,13 +14,14 @@
 
 
 /* DISCOVER */
-.flex.justify-center.items-center.rounded-2xl.overflow-hidden.relative:hover .absolute {
+.flex.justify-center.items-center.rounded-2xl.overflow-hidden.relative:hover .absolute_card {
     visibility: visible;
     opacity: 1;
 }
   
-.absolute {
+.absolute_card {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
+    position: absolute;
 }

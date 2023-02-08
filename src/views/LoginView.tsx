@@ -21,7 +21,7 @@ const LoginView = () => {
     return <>
         <div className="flex flex-col items-center justify-center h-screen">
             <h1 className="instalike_title text-[64px] leading-[76px]">Instalike</h1>
-            <p className="text-red-500">Message d'erreur</p>
+            <p className="text-red-500">Faire afficher un message d'erreur ici si les id/mdp ne sont pas bon</p>
             <form action="" className="flex flex-col gap-4 w-[348px] mt-4" onSubmit={function(e) {
                 e.preventDefault();
                 dispatch(loginAsync(email, password))

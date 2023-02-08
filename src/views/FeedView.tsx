@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import instalikeApi from '../instalikeApi';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faLocationDot, faHeart, faCommentDots, faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faCompass, faSquarePlus, faCircleUser, faMoon } from '@fortawesome/free-regular-svg-icons';
+import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../components/Navbar';
 
