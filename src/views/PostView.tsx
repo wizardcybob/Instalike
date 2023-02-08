@@ -1,5 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 
+// ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faEllipsisVertical, faHeart, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';

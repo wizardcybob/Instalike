@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import useAppDispatch from '../hooks/useAppDispatch';
@@ -13,7 +12,8 @@ return <>
     <Navbar />
     {/* PROFILE */}
     <div className="flex flex-col items-center justify-center h-screen">
-        <button className="bg-red-400 text-white font-bold h-10 rounded-md mt-2 p-2" onClick={() => {
+        <p>Bonjour Chloé</p>
+        <button className="bg-red-500 text-white font-bold h-10 rounded-md mt-2 py-2 px-4" onClick={() => {
             dispatch(logoutAsync());
             }}>Se déconnecter</button>
     </div>

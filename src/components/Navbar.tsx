@@ -1,3 +1,4 @@
+// ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faCompass, faSquarePlus, faCircleUser, faMoon } from '@fortawesome/free-regular-svg-icons';
