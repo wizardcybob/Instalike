@@ -1,10 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faEllipsisVertical, faHeart, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
 
 const usePostId = () => {
@@ -16,8 +13,7 @@ const PostView = () => {
 const id = usePostId();
 
 if (id === -1) {
-return
-<Navigate to=".." />;
+  return <Navigate to=".." />;
 }
 
 return <>
