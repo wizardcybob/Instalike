@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import instalikeApi from '../instalikeApi';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faLocationDot, faHeart, faCommentDots, faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faCompass, faSquarePlus, faCircleUser, faMoon } from '@fortawesome/free-regular-svg-icons';
@@ -5,6 +8,13 @@ import { faCompass, faSquarePlus, faCircleUser, faMoon } from '@fortawesome/free
 import Navbar from '../components/Navbar';
 
 const FeedView = () => {
+    useEffect(() => {
+        console.log('fetch');
+        instalikeApi.posts.fetch({ cursor: null });
+        instalikeApi.users.me.fetch();
+        instalikeApi.users.find(1).fetch();
+      }, []);
+    
 return <>
     {/* HEADER */}
     <Navbar />

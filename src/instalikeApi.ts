@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createInstalikeApi } from "@jmetterrothan/instalike";
 
-
 export const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN';
 
 const instalikeApi = createInstalikeApi(
@@ -13,6 +12,23 @@ const instalikeApi = createInstalikeApi(
     },
   })
 );
+
+instalikeApi.driver.interceptors.request.use((config) => {
+  const accessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY);
+
+  if (accessToken !== null) {
+    return {
+      ...config,
+      headers: {
+        ...config.headers,
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+  }
+
+  return config;
+});
+
 
 export const hasAccessToken = () => window.localStorage.getItem(ACCESS_TOKEN_KEY) !== null;
 

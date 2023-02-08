@@ -26,9 +26,9 @@ return <>
                     <FontAwesomeIcon className="text-[24px]" icon={faSquarePlus} />
                 </a>
                 {/* PROFIL */}
-                <a href="#">
+                <Link to="/profile">
                     <FontAwesomeIcon className="text-[24px]" icon={faCircleUser} />
-                </a>
+                </Link>
                 {/* LIGHT/DARK MODE */}
                 <a href="#">
                     <FontAwesomeIcon className="text-[24px]" icon={faMoon} />

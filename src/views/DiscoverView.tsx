@@ -1,7 +1,3 @@
-import { useEffect } from 'react';
-
-import instalikeApi from '../instalikeApi';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faCompass } from '@fortawesome/free-regular-svg-icons';
@@ -13,13 +9,8 @@ import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
 
 const DiscoverView = () => {
-  useEffect(() => {
-    instalikeApi.posts.fetch({ cursor: null });
-    instalikeApi.users.me.fetch();
-    instalikeApi.users.find(1).fetch();
-  }, []);
 
-  return <>
+return <>
     {/* HEADER */}
     <div className="border-b-[0.8px]">
         <div className="max-w-[1280px] mx-auto flex items-center justify-between px-4 py-2 h-16">
