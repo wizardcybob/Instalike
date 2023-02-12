@@ -1,19 +1,26 @@
 import { useEffect } from 'react';
-import instalikeApi from '../instalikeApi';
+import { Instalike } from '@jmetterrothan/instalike';
 
 // COMPOSANTS
 import Navbar from '../components/Navbar';
 import UserStory from '../components/UserStory';
 import Post from '../components/Post';
 
+// AUTRES FICHIERS
+import useAppDispatch from '../hooks/useAppDispatch';
+import useFeedItems from '../hooks/useFeedItems';
+import { fetchFeedUserAsync, calculateTime } from '../redux/feed/thunks';
+
+
 const FeedView = () => {
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        console.log('fetch');
-        instalikeApi.posts.fetch({ cursor: null });
-        instalikeApi.users.me.fetch();
-        instalikeApi.users.find(1).fetch();
-      }, []);
-    
+      dispatch(fetchFeedUserAsync());
+}, []);
+
+const feedItems = useFeedItems();
+
+
 return <>
     {/* HEADER */}
     <Navbar />
@@ -33,8 +40,27 @@ return <>
             </li>
         </ul>
         {/* POSTS */}
-        <Post />
-        <Post />
+        {feedItems &&
+        feedItems.map((post: Instalike.Post) => {
+            console.log(post)
+           
+            const time_post = calculateTime(post.createdAt);
+
+          return (
+            <Post key={post.id}
+              username={post.owner.userName}
+              location={post.location}
+              time_post={time_post}
+              img={post.resources[0]}
+              caption={post.caption}
+              isLiked={post.viewerHasLiked}
+              likes={post.likesCount}
+              comments={post.commentsCount}
+              comment_post={post.previewComments}
+            ></Post>
+          );
+        })}
+
     </div>
 </>;
 };
