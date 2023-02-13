@@ -9,6 +9,7 @@ import Post from '../components/Post';
 // AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
+import useUserStoryItems from '../hooks/useUserStoryItems';
 import { fetchFeedUserAsync, calculateTime } from '../redux/feed/thunks';
 
 
@@ -19,6 +20,7 @@ const FeedView = () => {
 }, []);
 
 const feedItems = useFeedItems();
+const userStoryItems = useUserStoryItems(); //ici
 
 
 return <>
@@ -29,15 +31,18 @@ return <>
         {/* USERS / STORIES */}
         <ul className="flex gap-8">
             {/* USER / STORY */}
-            <li>
-                <UserStory />
-            </li>
-            <li>
-                <UserStory />
-            </li>
-            <li>
-                <UserStory />
-            </li>
+            {userStoryItems && //ici
+                userStoryItems.map((userstory: Instalike.User) => {
+                    console.log("ici" + userstory)
+
+                return (
+                    <UserStory key={userstory.id}
+                        username={userstory.userName}
+                    ></UserStory>
+                );
+                })
+            }
+            {/* <UserStory /> */}
         </ul>
         {/* POSTS */}
         {feedItems &&

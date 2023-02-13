@@ -3,7 +3,7 @@ import { Media, Comment } from '@jmetterrothan/instalike/dist/types/Instalike';
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { calculateTime } from '../redux/feed/thunks';
+
 
 // COMPOSANTS
 // import Comment from '../components/Comment';
@@ -55,7 +55,7 @@ return <>
     <div className="p-4">
         <p className="text-red-500">{caption}</p>
         <div className="flex mt-3 gap-2">
-        <button type="button" className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}>
+            <button type="button" className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}>
                 <FontAwesomeIcon className="text-[20px]" icon={faHeart} />
                 <span className="mt-1">{likes}</span>
             </button>

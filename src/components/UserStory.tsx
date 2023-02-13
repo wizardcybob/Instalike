@@ -2,11 +2,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+type UserProps = {
+    username: string;
+};
 
-const UserStory = () => {
+const UserStory = ({ username }: UserProps) => {
+
 return <>
     {/* USER / STORY */}
-    <div className="flex flex-col items-center">
+    <li className="flex flex-col items-center">
         <div className="relative">
             <div className="rounded-full overflow-hidden w-24 h-24">
                 <img src="/src/assets/images/pp_user.png" alt="" />
@@ -16,8 +20,8 @@ return <>
                 <FontAwesomeIcon className="text-[14px]" icon={faPlus} />
             </button>
         </div>
-        <p className="mt-2">Chloé</p>
-    </div>
+        <p className="mt-2">name : {username}</p>
+    </li>
 </>;
 };
 

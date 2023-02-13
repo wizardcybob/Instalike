@@ -22,7 +22,7 @@ function App() {
         <Route path="post/:id" element={<PostView />} />
         <Route path="profile" element={<Profile />} />
       </Route>
-      <Route path="*" element={<Navigate to="discover" />} />
+      <Route path="*" element={<Navigate to="feed" />} />
     </Routes>
   );
 }

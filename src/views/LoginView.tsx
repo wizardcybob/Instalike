@@ -34,7 +34,7 @@ const LoginView = () => {
                 <input id="password" className="px-4 bg-gray-200 h-12 rounded-md" type="password" name="password" placeholder="Mot de passe" required onChange={(e) => {
               setPassword(e.target.value);
             }}></input>
-                <p className="text-sm">Not Chloé ? <a className="font-bold text-blue-400" href="">Change account</a></p>
+                <p className="text-sm">Not Chloé ? <a className="font-bold text-blue-400" href="#">Change account</a></p>
                 <button type="submit" className="bg-blue-400 text-white font-bold h-10 rounded-md mt-2">Login</button>
                 {/* <button type="button" className="bg-red-400 text-white font-bold h-10 rounded-md mt-2"
                     onClick={() => {
