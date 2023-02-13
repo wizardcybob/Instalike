@@ -1,6 +1,12 @@
-import type { AppThunkAction } from '../types';
-import { setUserFeed } from './actions';
+import { Instalike } from '@jmetterrothan/instalike';
+import { data } from 'autoprefixer';
 
+// Autres fichiers
+import type { AppThunkAction } from '../types';
+import { setUserFeed, likePostFeedAction, unlikePostFeedAction } from './actions';
+
+
+// Users pour le feed
 export const fetchFeedUserAsync = (): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
 
@@ -10,6 +16,7 @@ export const fetchFeedUserAsync = (): AppThunkAction<Promise<void>> => {
   };
 };
 
+// Calcul temps de publication d'un post / commentaire
 export const calculateTime = (createdAt: string): string => {
   const createdDate = new Date(createdAt);
   const currentDate = new Date();
@@ -26,3 +33,27 @@ export const calculateTime = (createdAt: string): string => {
     return diffDays === 1 ? `${diffDays} day ago` : `${diffDays} days ago`;
   }
 }
+
+// Like post
+export const likepostAsync = (postId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    try {
+      await api.posts.find(postId).like();
+      dispatch(likePostFeedAction(postId));
+    } catch (e) {
+      throw e;
+    }
+  };
+};
+
+// Unlike post
+export const unlikePostAsync = (postId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    try {
+      await api.posts.find(postId).unlike();
+      dispatch(unlikePostFeedAction(postId));
+    } catch (e) {
+      throw e;
+    }
+  };
+};

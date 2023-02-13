@@ -10,7 +10,7 @@ import Post from '../components/Post';
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
 import useUserStoryItems from '../hooks/useUserStoryItems';
-import { fetchFeedUserAsync, calculateTime } from '../redux/feed/thunks';
+import { fetchFeedUserAsync, calculateTime, likepostAsync, unlikePostAsync } from '../redux/feed/thunks';
 
 
 const FeedView = () => {
@@ -53,6 +53,7 @@ return <>
 
           return (
             <Post key={post.id}
+              postid={post.id}
               username={post.owner.userName}
               location={post.location}
               time_post={time_post}

@@ -4,11 +4,16 @@ import { Media, Comment } from '@jmetterrothan/instalike/dist/types/Instalike';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
+// Autres fichiers
+import useAppDispatch from '../hooks/useAppDispatch';
+import { likepostAsync, unlikePostAsync } from '../redux/feed/thunks';
+
 
 // COMPOSANTS
 // import Comment from '../components/Comment';
 
 type PostProps = {
+    postid: number;
     username: string;
     location: string | null;
     time_post: string | null;
@@ -21,8 +26,8 @@ type PostProps = {
 };
 
 
-const Post = ({ username, location, time_post, img, caption, isLiked, likes, comments, comment_post }: PostProps) => {
-
+const Post = ({ postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post }: PostProps) => {
+const dispatch = useAppDispatch();
 return <>
 {/* A POST */}
 <div className="border rounded-xl mt-10 bg-white">
@@ -55,10 +60,30 @@ return <>
     <div className="p-4">
         <p className="text-red-500">{caption}</p>
         <div className="flex mt-3 gap-2">
-            <button type="button" className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}>
+            {/* <button type="button" className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}>
                 <FontAwesomeIcon className="text-[20px]" icon={faHeart} />
                 <span className="mt-1">{likes}</span>
-            </button>
+            </button> */}
+            {isLiked ? (
+                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}
+                  onClick={() => {
+                    dispatch(unlikePostAsync(postid));
+                  }}
+                >
+                    <FontAwesomeIcon className="text-[20px]" icon={faHeart} />
+                    <span className="mt-1">{likes}</span>
+                </button>
+              ) : (
+                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}
+                  onClick={() => {
+                    dispatch(likepostAsync(postid));
+                  }}
+                >
+                  <FontAwesomeIcon className="text-[20px]" icon={faHeart} />
+                    <span className="mt-1">{likes}</span>
+                </button>
+              )}
+
             <button type="button" className="px-4 flex items-center gap-2">
                 <FontAwesomeIcon className="text-[20px]" icon={faCommentDots} />
                 <span className="mt-1">{comments}</span>
