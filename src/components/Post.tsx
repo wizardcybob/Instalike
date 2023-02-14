@@ -1,4 +1,5 @@
-import { Media, Comment } from '@jmetterrothan/instalike/dist/types/Instalike';
+import { Instalike } from '@jmetterrothan/instalike';
+import { Media } from '@jmetterrothan/instalike/dist/types/Instalike';
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,10 +8,11 @@ import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fort
 // Autres fichiers
 import useAppDispatch from '../hooks/useAppDispatch';
 import { likepostAsync, unlikePostAsync } from '../redux/feed/thunks';
-
+import { useState } from 'react';
 
 // COMPOSANTS
-// import Comment from '../components/Comment';
+import Comment from './Comment';
+
 
 type PostProps = {
     postid: number;
@@ -22,12 +24,15 @@ type PostProps = {
     isLiked: boolean;
     likes: number;
     comments: number;
-    comment_post: Comment,
+    comment_post: Instalike.Comment[];
 };
 
 
 const Post = ({ postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post }: PostProps) => {
 const dispatch = useAppDispatch();
+
+
+
 return <>
 {/* A POST */}
 <div className="border rounded-xl mt-10 bg-white">
@@ -58,12 +63,8 @@ return <>
     </div>
     {/* BIO POST */}
     <div className="p-4">
-        <p className="text-red-500">{caption}</p>
-        <div className="flex mt-3 gap-2">
-            {/* <button type="button" className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}>
-                <FontAwesomeIcon className="text-[20px]" icon={faHeart} />
-                <span className="mt-1">{likes}</span>
-            </button> */}
+        {caption && <p className="text-red-500 mb-3">{caption}</p>}
+        <div className="flex gap-2">
             {isLiked ? (
                 <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}
                   onClick={() => {
@@ -90,33 +91,10 @@ return <>
             </button>
         </div>
     </div>
-    {/* COMMENTS POST -> faire un composant "Comment" ? */}
-    <div className="border-t-[0.8px] p-4 flex flex-col gap-4">
-    {comment_post && comment_post.map((comment, index) => (
-        <div key={index} className="flex justify-between">
-            <div className="flex items-center gap-4">
-            <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-8 h-8">
-                {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                <p className="uppercase text-white">{comment.owner.userName.charAt(0)}</p>
-            </div>
-            <div>
-                <p><span className="font-bold mr-1">{comment.owner.userName}</span>{comment.text}</p>
-                <p className="text-sm">7 days ago</p>
-            </div>
-            </div>
-            <div className="w-10 flex justify-center items-center">
-                <FontAwesomeIcon className="text-[28px]" icon={faEllipsisVertical} /> {/* à afficher que si on est l'auteur du com */}
-            </div>
-            {/* afficher cet icon que si on est l'auteur du com */}
-            {/* <div className="w-10 flex justify-center items-center">
-                {comment.owner.userName === currentUser && (
-                    <FontAwesomeIcon className="text-[28px]" icon={faEllipsisVertical} />
-                )}
-            </div> */}
-        </div>
-    ))}
+    {/* COMMENTS POST */}
+    <div className={`border-t-${comments > 0 ? '[0.8px] p-4' : '0' } flex flex-col gap-4`}>
+        <Comment tab_comments={comment_post}></Comment>
     </div>
-
 </div>
 </>;
 };

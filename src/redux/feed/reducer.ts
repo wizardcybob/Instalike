@@ -1,7 +1,7 @@
 import { Instalike } from '@jmetterrothan/instalike';
 import { Reducer } from 'redux';
 
-import { FeedAction, SET_FEED, LIKE_POST_FEED, UNLIKE_POST_FEED } from './actions';
+import { FeedAction, SET_FEED, LIKE_POST_FEED, UNLIKE_POST_FEED, DELETE_COMMENT_FEED } from './actions';
 
 type FeedState = {
   items: Instalike.Post[];
@@ -37,6 +37,22 @@ const feedReducer: Reducer<FeedState, FeedAction> = (state = initalState, action
             return { ...post, viewerHasLiked: false, likesCount: post.likesCount - 1 };
           }
           return post;
+        }),
+      };
+
+      case DELETE_COMMENT_FEED:
+      return {
+        ...state,
+        items: state.items.map((post) => {
+          return {
+            ...post,
+            previewComments: post.previewComments.map((comment, key) => {
+              if (comment.id == action.payload) {
+                return { ...comment, text: '' };
+              }
+              return comment;
+            }),
+          };
         }),
       };
   
