@@ -4,8 +4,10 @@ import { Instalike } from '@jmetterrothan/instalike';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { /* faEllipsisVertical, */ faTrash } from '@fortawesome/free-solid-svg-icons';
 
+// AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import { deleteCommentFeedAsync } from '../redux/feed/thunks';
+import { calculateTime } from '../redux/post/thunks';
 
 type CommentProps = {
     tab_comments: Instalike.Comment[];
@@ -29,7 +31,7 @@ const Comment = ({ tab_comments }: CommentProps) => {
                     <div>
                         {/* <p><span className="font-bold mr-1">{comment.owner.userName}</span>{limitCommentText(comment.text)}</p> */}
                         <p><span className="font-bold mr-1">{comment.owner.userName}</span>{comment.text}</p>
-                        <p className="text-sm">7 days ago</p>
+                        <p className="text-sm">{calculateTime(comment.createdAt)}</p>
                     </div>
                 </div>
                 {comment.owner.isViewer && (
