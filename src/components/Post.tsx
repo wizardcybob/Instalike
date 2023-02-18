@@ -66,7 +66,7 @@ return <>
         {caption && <p className="text-red-500 mb-3">{caption}</p>}
         <div className="flex gap-2">
             {isLiked ? (
-                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}
+                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'gray-400'} rounded-full flex items-center gap-2`}
                   onClick={() => {
                     dispatch(unlikePostAsync(postid));
                   }}
@@ -75,7 +75,7 @@ return <>
                     <span className="mt-1">{likes}</span>
                 </button>
               ) : (
-                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'slate-400'} rounded-full flex items-center gap-2`}
+                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'gray-400'} rounded-full flex items-center gap-2`}
                   onClick={() => {
                     dispatch(likepostAsync(postid));
                   }}

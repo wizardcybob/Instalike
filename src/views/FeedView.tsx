@@ -10,7 +10,9 @@ import Post from '../components/Post';
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
 import useUserStoryItems from '../hooks/useUserStoryItems';
-import { fetchFeedUserAsync, calculateTime } from '../redux/feed/thunks';
+import { fetchFeedUserAsync } from '../redux/feed/thunks';
+import { calculateTime } from '../redux/post/thunks';
+// import { Link } from 'react-router-dom';
 
 
 const FeedView = () => {
@@ -48,22 +50,22 @@ return <>
         {feedItems &&
         feedItems.map((post: Instalike.Post) => {
             console.log(post)
-           
-            const time_post = calculateTime(post.createdAt);
 
           return (
-            <Post key={post.id}
-              postid={post.id}
-              username={post.owner.userName}
-              location={post.location}
-              time_post={time_post}
-              img={post.resources[0]}
-              caption={post.caption}
-              isLiked={post.viewerHasLiked}
-              likes={post.likesCount}
-              comments={post.commentsCount}
-              comment_post={post.previewComments}
-            ></Post>
+            // <Link key={post.id} to={`/post/${post.id}`}>
+                <Post key={post.id}
+                postid={post.id}
+                username={post.owner.userName}
+                location={post.location}
+                time_post={calculateTime(post.createdAt)}
+                img={post.resources[0]}
+                caption={post.caption}
+                isLiked={post.viewerHasLiked}
+                likes={post.likesCount}
+                comments={post.commentsCount}
+                comment_post={post.previewComments}
+                ></Post>
+            // </Link>
           );
         })}
 
