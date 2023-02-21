@@ -3,26 +3,32 @@ import { Instalike } from '@jmetterrothan/instalike';
 
 // COMPOSANTS
 import Navbar from '../components/Navbar';
-import UserStory from '../components/UserStory';
+import Suggestion from '../components/Suggestion';
 import Post from '../components/Post';
+// import { Link } from 'react-router-dom';
 
 // AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
-import useUserStoryItems from '../hooks/useUserStoryItems';
+import useSuggestionItems from '../hooks/useSuggestionItems';
 import { fetchFeedUserAsync } from '../redux/feed/thunks';
 import { calculateTime } from '../redux/post/thunks';
-// import { Link } from 'react-router-dom';
+import { fetchSuggestionAsync } from '../redux/suggestion/thunks';
+
 
 
 const FeedView = () => {
     const dispatch = useAppDispatch();
     useEffect(() => {
       dispatch(fetchFeedUserAsync());
-}, []);
+    }, []);
 
-const feedItems = useFeedItems();
-const userStoryItems = useUserStoryItems(); //ici
+    useEffect(() => {
+        dispatch(fetchSuggestionAsync());
+    }, []);   
+
+    const feedItems = useFeedItems();
+    const suggestionItems = useSuggestionItems().data;
 
 
 return <>
@@ -33,22 +39,20 @@ return <>
         {/* USERS / STORIES */}
         <ul className="flex gap-8">
             {/* USER / STORY */}
-            {userStoryItems && //ici
-                userStoryItems.map((userstory: Instalike.User) => {
-                    console.log("ici" + userstory)
+            {suggestionItems && //ici
+                suggestionItems.map((user) => {
 
                 return (
-                    <UserStory key={userstory.id}
-                        username={userstory.userName}
-                    ></UserStory>
+                    <Suggestion key={user.id}
+                        firstname={user.firstName}
+                    ></Suggestion>
                 );
                 })
             }
-            {/* <UserStory /> */}
         </ul>
         {/* POSTS */}
         {feedItems &&
-        feedItems.map((post: Instalike.Post) => {
+            feedItems.map((post: Instalike.Post) => {
             console.log(post)
 
           return (

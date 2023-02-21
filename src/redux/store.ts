@@ -6,6 +6,8 @@ import instalikeApi from '../instalikeApi';
 import authReducer from './auth/reducer';
 import feedReducer from './feed/reducer';
 import postReducer from './post/reducer';
+import suggestionReducer from './suggestion/reducer';
+
 
 
 
@@ -13,6 +15,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     feed: feedReducer,
     post: postReducer,
+    suggestion: suggestionReducer, // suggestion = userstory
 });  
 
 const middleware: Middleware[] = [];

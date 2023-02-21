@@ -41,7 +41,7 @@ return <>
         <div className="flex items-center gap-4">
             <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-12 h-12">
                 {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                <p className="uppercase text-white">{username.charAt(0)}</p>
+                <p className="uppercase text-white text-xl">{username.charAt(0)}</p>
             </div>
             <div>
                 <p className="font-bold">{username}</p>

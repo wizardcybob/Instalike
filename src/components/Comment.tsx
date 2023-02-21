@@ -26,7 +26,7 @@ const Comment = ({ tab_comments }: CommentProps) => {
             <div className="flex justify-between">
                 <div className="flex items-center gap-4">
                     <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-8 h-8">
-                        <p className="uppercase text-white">{comment.owner.userName.charAt(0)}</p>
+                        <p className="uppercase text-white text-xs">{comment.owner.userName.charAt(0)}</p>
                     </div>
                     <div>
                         {/* <p><span className="font-bold mr-1">{comment.owner.userName}</span>{limitCommentText(comment.text)}</p> */}
