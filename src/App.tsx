@@ -4,6 +4,7 @@ import DiscoverView from './views/DiscoverView';
 import FeedView from './views/FeedView';
 import LoginView from './views/LoginView';
 import PostView from './views/PostView';
+import AddPostView from './views/AddPostView';
 import Profile from './views/Profile';
 
 import AuthGuard from './components/AuthGuard';
@@ -19,6 +20,7 @@ function App() {
       <Route element={<AuthGuard />}>
         <Route path="feed" element={<FeedView />} />
         <Route path="discover" element={<DiscoverView />} />
+        <Route path="addpost" element={<AddPostView />} />
         <Route path="post/:id" element={<PostView />} />
         <Route path="profile" element={<Profile />} />
       </Route>

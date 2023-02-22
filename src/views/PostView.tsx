@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import useAppDispatch from '../hooks/useAppDispatch';
 import usePost from '../hooks/usePostItems';
-import { fetchPostAsync, calculateTime } from '../redux/post/thunks';
+import { fetchPost, calculateTime } from '../redux/post/thunks';
 import Post from '../components/Post';
 
 
@@ -15,7 +15,7 @@ const PostView = () => {
   const dispatch = useAppDispatch();
   const id = usePostId();
   useEffect(() => {
-    dispatch(fetchPostAsync(id));
+    dispatch(fetchPost(id));
   }, []);
   const post = usePost().items;
 

@@ -4,22 +4,6 @@ import { data } from 'autoprefixer';
 import { AppThunkAction } from '../types';
 import { failurePostAction, loadPostAction, setPost, sucessPostAction } from './actions';
 
-export const fetchPostAsync = (postid: number): AppThunkAction<Promise<void>> => {
-  return async (dispatch, getState, api) => {
-    dispatch(loadPostAction());
-
-    try {
-      const { data } = await api.posts.find(postid).fetch();
-      dispatch(setPost(data));
-
-      dispatch(sucessPostAction());
-    } catch (eee) {
-      dispatch(failurePostAction());
-
-      throw eee;
-    }
-  };
-};
 
 // Calcul temps de publication d'un post / commentaire
 export const calculateTime = (createdAt: string): string => {
@@ -40,4 +24,40 @@ export const calculateTime = (createdAt: string): string => {
     } else {
       return diffDays === 1 ? `${diffDays} day ago` : `${diffDays} days ago`;
     }
-} 
+}
+
+
+// Réccupérer les posts
+export const fetchPost = (postid: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    dispatch(loadPostAction());
+
+    try {
+      const { data } = await api.posts.find(postid).fetch();
+      dispatch(setPost(data));
+
+      dispatch(sucessPostAction());
+    } catch (eee) {
+      dispatch(failurePostAction());
+
+      throw eee;
+    }
+  };
+};
+
+
+// Ajouter un post
+export const addPost = (resources: File[], location: string, caption: string): AppThunkAction<Promise<void>> => { //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
+  return async (dispatch, getState, api) => {
+    try {
+      const { data } = await api.posts.create({
+        resources: resources,
+        location: location,
+        caption: caption,
+      });
+      dispatch(setPost(data));
+    } catch (fff) {
+      throw fff;
+    }
+  };
+};

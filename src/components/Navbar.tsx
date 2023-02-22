@@ -23,7 +23,7 @@ return <>
                     <FontAwesomeIcon className="text-[24px]" icon={faCompass} />
                     </Link>
                 {/* ADD PICS */}
-                <a href="#">
+                <a href="/addpost">
                     <FontAwesomeIcon className="text-[24px]" icon={faSquarePlus} />
                 </a>
                 {/* PROFIL */}
