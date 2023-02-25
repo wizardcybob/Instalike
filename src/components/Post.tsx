@@ -35,7 +35,7 @@ const dispatch = useAppDispatch();
 
 return <>
 {/* A POST */}
-<div className="border rounded-xl mt-10 bg-white">
+<div className="border rounded-xl bg-white">
     {/* HEADER POST */}
     <div className="flex justify-between p-4">
         <div className="flex items-center gap-4">

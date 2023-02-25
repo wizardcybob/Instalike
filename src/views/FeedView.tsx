@@ -5,7 +5,6 @@ import { Instalike } from '@jmetterrothan/instalike';
 import Navbar from '../components/Navbar';
 import Suggestion from '../components/Suggestion';
 import Post from '../components/Post';
-// import { Link } from 'react-router-dom';
 
 // AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
@@ -34,7 +33,7 @@ const FeedView = () => {
 return <>
     {/* HEADER */}
     <Navbar />
-    {/* FEED */}
+    {/* FEEDVIEW */}
     <div className="max-w-[640px] mx-auto mt-8 mb-16 px-4">
         {/* USERS / STORIES */}
         <ul className="flex gap-8">
@@ -50,13 +49,13 @@ return <>
                 })
             }
         </ul>
-        {/* POSTS */}
-        {feedItems &&
-            feedItems.map((post: Instalike.Post) => {
-            console.log(post)
+        <div className="flex flex-col gap-10 mt-10">
+            {/* POSTS */}
+            {feedItems &&
+                feedItems.map((post: Instalike.Post) => {
+                console.log(post)
 
-          return (
-            // <Link key={post.id} to={`/post/${post.id}`}>
+            return (
                 <Post key={post.id}
                 postid={post.id}
                 username={post.owner.userName}
@@ -69,9 +68,9 @@ return <>
                 comments={post.commentsCount}
                 comment_post={post.previewComments}
                 ></Post>
-            // </Link>
-          );
-        })}
+            );
+            })}
+        </div>
 
     </div>
 </>;
