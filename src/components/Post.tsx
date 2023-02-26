@@ -35,13 +35,13 @@ const dispatch = useAppDispatch();
 
 return <>
 {/* A POST */}
-<div className="border rounded-xl bg-white">
+<div className="border rounded-xl bg-white dark:bg-darkblue">
     {/* HEADER POST */}
     <div className="flex justify-between p-4">
         <div className="flex items-center gap-4">
             <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-12 h-12">
                 {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                <p className="uppercase text-white text-xl">{username.charAt(0)}</p>
+                <p className="uppercase text-white dark:text-darkblue text-xl">{username.charAt(0)}</p>
             </div>
             <div>
                 <p className="font-bold">{username}</p>
@@ -64,7 +64,7 @@ return <>
     </div>
     {/* BIO POST */}
     <div className="p-4">
-        {caption && <p className="text-red-500 mb-3">{caption}</p>}
+        {caption && <p className="mb-3">{caption}</p>}
         <div className="flex gap-2">
             {isLiked ? (
                 <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'gray-400'} rounded-full flex items-center gap-2`}

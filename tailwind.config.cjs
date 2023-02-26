@@ -1,14 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
+  darkMode: 'class', //pour la mise en place du darkmode
   theme: {
     extend: {
-      colords: {
+      colors: {
         'light-gray': '#718096',
+        'darkblue': '#1A202C',
       },
-      boxShadow: {
-        'post': '0 0 20px 1px rgba(0, 0, 0, 0.2)',
-      }
     },
   },
   plugins: [],
