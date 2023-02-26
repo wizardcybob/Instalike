@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 import { Instalike } from '@jmetterrothan/instalike';
 
+// ICONS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+
 // COMPOSANTS
 import Navbar from '../components/Navbar';
 import Suggestion from '../components/Suggestion';
@@ -49,28 +53,36 @@ return <>
                 })
             }
         </ul>
-        <div className="flex flex-col gap-10 mt-10">
-            {/* POSTS */}
-            {feedItems &&
-                feedItems.map((post: Instalike.Post) => {
-                console.log(post)
+        {feedItems && feedItems.length > 0 ? (
+            <div className="flex flex-col gap-10 mt-10">
+                {/* POSTS */}
+                {feedItems.map((post: Instalike.Post) => {
+                    console.log(post)
 
-            return (
-                <Post key={post.id}
-                postid={post.id}
-                username={post.owner.userName}
-                location={post.location}
-                time_post={calculateTime(post.createdAt)}
-                img={post.resources[0]}
-                caption={post.caption}
-                isLiked={post.viewerHasLiked}
-                likes={post.likesCount}
-                comments={post.commentsCount}
-                comment_post={post.previewComments}
-                ></Post>
-            );
-            })}
-        </div>
+                    return (
+                        <Post key={post.id}
+                        postid={post.id}
+                        username={post.owner.userName}
+                        location={post.location}
+                        time_post={calculateTime(post.createdAt)}
+                        img={post.resources[0]}
+                        caption={post.caption}
+                        isLiked={post.viewerHasLiked}
+                        likes={post.likesCount}
+                        comments={post.commentsCount}
+                        comment_post={post.previewComments}
+                        ></Post>
+                    );
+                })}
+            </div>
+        ) : (
+            <div className="flex flex-col items-center gap-4 mt-20">
+                <FontAwesomeIcon className="text-[96px]" icon={faHouse} />
+                <p className="font-bold text-xl">Votre feed est vide</p>
+                <p>Vous devriez suivre des utilisateurs pour remplir votre feed...</p>
+            </div>
+        )}
+
 
     </div>
 </>;
