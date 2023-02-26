@@ -52,6 +52,7 @@ return <>
                     </div>
                 }
             </div>
+            <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">follow</button>
         </div>
         <div className="w-10 flex justify-center items-center">
             <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
