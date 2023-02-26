@@ -9,9 +9,16 @@ import useAppDispatch from '../hooks/useAppDispatch';
 import usePost from '../hooks/usePostItems';
 import { addPost } from '../redux/post/thunks';
 
+// LANGUAGE
+import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
+import Language from '../assets/enums/Language';
+
+
 const AddPostView = () => {
-const dispatch = useAppDispatch();
-const [selectedImg, setSelectedImg] = useState<File[]>([]);
+    const { t,i18n } = useTranslation();
+    const dispatch = useAppDispatch();
+    const [selectedImg, setSelectedImg] = useState<File[]>([]);
     const [location, setLocation] = useState("");
     const [caption, setCaption] = useState("");
     const [redirect, setRedirect] = useState(false);
@@ -33,11 +40,11 @@ const [selectedImg, setSelectedImg] = useState<File[]>([]);
         <Navbar />
         {/* MODAL */}
         <div className="max-w-[640px] mx-auto p-6 border rounded-xl mt-10 bg-white flex flex-col">
-            <p className="text-center font-bold text-2xl">Créer un post</p>
+            <p className="text-center font-bold text-2xl">{t('addpost.title')}</p>
             <form className="flex flex-col gap-4 mt-6">
                 {/* IMAGE */}
                 <div className="flex flex-col gap-1">
-                    <label htmlFor="image-upload" className="font-bold">Ajouter une image :</label>
+                    <label htmlFor="image-upload" className="font-bold">{t('addpost.image')} :</label>
                     <input type="file" accept="image/*" id="image-upload" onChange={(test)=> {
                         if (test.target.files) {
                         setSelectedImg(selectedImg.concat(test.target.files[0]));
@@ -47,13 +54,13 @@ const [selectedImg, setSelectedImg] = useState<File[]>([]);
                 </div>
                 {/* LOCATION */}
                 <div className="flex flex-col gap-1">
-                    <label htmlFor="location-input" className="font-bold">Lieu :</label>
+                    <label htmlFor="location-input" className="font-bold">{t('addpost.place')} :</label>
                     <input className="h-10 p-2 rounded-sm border" id="location-input" placeholder="Lieu" value={location} onChange={(e)=>
                     setLocation(e.target.value)} />
                 </div>
                 {/* DESCRIPTION */}
                 <div className="flex flex-col gap-1">
-                    <label htmlFor="caption-input" className="font-bold">Description :</label>
+                    <label htmlFor="caption-input" className="font-bold">{t('addpost.caption')} :</label>
                     <input className="h-10 p-2 rounded-sm border" id="caption-input" placeholder="Description" value={caption} onChange={(e)=>
                     setCaption(e.target.value)} />
                 </div>
@@ -62,7 +69,7 @@ const [selectedImg, setSelectedImg] = useState<File[]>([]);
                     {/* CANCEL BTN */}
                     <Link to="/feed">
                     <button
-                        className="bg-red-600 text-white font-bold h-10 rounded-md mt-2 uppercase w-full">Annuler</button>
+                        className="bg-red-600 text-white font-bold h-10 rounded-md mt-2 uppercase w-full">{t('actions.cancel')}</button>
                     </Link>
                     {/* SUBMIT BTN */}
                     <button className="bg-green-700 text-white font-bold h-10 rounded-md mt-2 uppercase w-full"
@@ -70,7 +77,7 @@ const [selectedImg, setSelectedImg] = useState<File[]>([]);
                             dispatch(addPost(selectedImg, location, caption)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
                         }}
                         >
-                        Envoyer
+                        {t('actions.send')}
                     </button>
                 </div>
             </form>
@@ -81,6 +88,6 @@ const [selectedImg, setSelectedImg] = useState<File[]>([]);
 
     </>
     );
-    };
+};
 
-    export default AddPostView;
+export default AddPostView;

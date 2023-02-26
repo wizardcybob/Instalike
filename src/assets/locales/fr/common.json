@@ -1,6 +1,18 @@
 {
-    "followers": "Abonnés {{ count }}",
+    "languages": {
+        "aaa": "FR",
+        "french": "français",
+        "english": "anglais"
+    },
     "actions": {
-        "follow": "suivre"
+        "follow": "suivre",
+        "send": "envoyer",
+        "cancel": "annuler"
+    },
+    "addpost": {
+        "title": "Créer un post",
+        "image": "Ajouter une image",
+        "place": "Lieu",
+        "caption": "Description"
     }
 }

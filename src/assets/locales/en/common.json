@@ -1,6 +1,18 @@
 {
-    "followers": "followers {{ count }}",
+    "languages": {
+        "aaa": "EN",
+        "french": "french",
+        "english": "english"
+    },
     "actions": {
-        "follow": "follow"
+        "follow": "follow",
+        "send": "send",
+        "cancel": "cancel"
+    },
+    "addpost": {
+        "title": "Create a post",
+        "image": "Add an image",
+        "place": "Place",
+        "caption": "Caption"
     }
 }
