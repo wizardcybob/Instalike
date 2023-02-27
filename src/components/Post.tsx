@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Instalike } from '@jmetterrothan/instalike';
 import { Media } from '@jmetterrothan/instalike/dist/types/Instalike';
 
@@ -37,8 +38,17 @@ type PostProps = {
 const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed }: PostProps) => {
 const dispatch = useAppDispatch();
 const [dropdownOpen, setDropdownOpen] = useState(false);
+const [setnavigateToPost] = useState(false);
 
 
+// Réccupérer le lien du post
+async function copyLink(text: string) {
+  if ('clipboard' in navigator) {
+    return await navigator.clipboard.writeText(text);
+  } else {
+    return document.execCommand('copy', true, text);
+  }
+}
 
 return <>
 {/* A POST */}
@@ -101,10 +111,15 @@ return <>
                     >
                       Follow
                     </button>
-                  )}
-
-                <div className="hover:bg-gray-200 p-2">Voir la publication</div>
-                <div className="hover:bg-gray-200 p-2">Copier le lien</div>
+                  )
+                }
+                <button className="hover:bg-gray-200 p-2 w-full text-left">
+                  <Link to={`/post/${postid}`}>Voir la publication</Link>
+                </button>
+                <button className="hover:bg-gray-200 p-2 w-full text-left" onClick={() => {
+                      copyLink(window.location.origin.toString() + '/post/' + postid);
+                    }}
+                >Copier le lien</button>
             </div>
         </div>
 
