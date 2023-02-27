@@ -41,7 +41,10 @@ const AddPostView = () => {
         {/* MODAL */}
         <div className="max-w-[640px] mx-auto p-6 border rounded-xl mt-10 bg-white flex flex-col">
             <p className="text-center font-bold text-2xl">{t('addpost.title')}</p>
-            <form className="flex flex-col gap-4 mt-6">
+            <form className="flex flex-col gap-4 mt-6" onSubmit={(event)=> {
+                event.preventDefault();
+                dispatch(addPost(selectedImg, location, caption)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
+            }}>
                 {/* IMAGE */}
                 <div className="flex flex-col gap-1">
                     <label htmlFor="image-upload" className="font-bold">{t('addpost.image')} :</label>
@@ -72,11 +75,7 @@ const AddPostView = () => {
                         className="bg-red-600 text-white font-bold h-10 rounded-md mt-2 uppercase w-full">{t('actions.cancel')}</button>
                     </Link>
                     {/* SUBMIT BTN */}
-                    <button className="bg-green-700 text-white font-bold h-10 rounded-md mt-2 uppercase w-full"
-                        onClick={(test)=> {
-                            dispatch(addPost(selectedImg, location, caption)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
-                        }}
-                        >
+                    <button className="bg-green-700 text-white font-bold h-10 rounded-md mt-2 uppercase w-full" type="submit">
                         {t('actions.send')}
                     </button>
                 </div>

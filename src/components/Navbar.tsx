@@ -31,9 +31,9 @@ return <>
                     <FontAwesomeIcon className="text-[24px]" icon={faCompass} />
                     </Link>
                 {/* ADD PICS */}
-                <a href="/addpost">
+                <Link to="/addpost">
                     <FontAwesomeIcon className="text-[24px]" icon={faSquarePlus} />
-                </a>
+                </Link>
                 {/* PROFIL */}
                 <Link to="/profile">
                     <FontAwesomeIcon className="text-[24px]" icon={faCircleUser} />
