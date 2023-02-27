@@ -1,8 +1,10 @@
 import { Instalike } from '@jmetterrothan/instalike';
 import { data } from 'autoprefixer';
 
+// AUTRES FICHIERS
 import { AppThunkAction } from '../types';
-import { failurePostAction, loadPostAction, setPost, sucessPostAction } from './actions';
+import { failurePostAction, loadPostAction, setPost, sucessPostAction, followUserPostAction, unfollowUserPostAction } from './actions';
+import { fetchFeedUserAsync } from '../feed/thunks';
 
 
 // Calcul temps de publication d'un post / commentaire
@@ -58,6 +60,30 @@ export const addPost = (resources: File[], location: string, caption: string): A
       dispatch(setPost(data));
     } catch (fff) {
       throw fff;
+    }
+  };
+};
+
+// Follow someone
+export const followUserPostAsync = (userId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    try {
+      await api.users.me.followers.follow(userId);
+      dispatch(followUserPostAction());
+    } catch (e) {
+      throw e;
+    }
+  };
+};
+
+// Unfollow someone
+export const unfollowUserPostAsync = (userId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    try {
+      await api.users.me.followers.unfollow(userId);
+      dispatch(unfollowUserPostAction());
+    } catch (e) {
+      throw e;
     }
   };
 };

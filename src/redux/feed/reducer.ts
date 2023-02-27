@@ -1,7 +1,7 @@
 import { Instalike } from '@jmetterrothan/instalike';
 import { Reducer } from 'redux';
 
-import { FeedAction, SET_FEED, LIKE_POST_FEED, UNLIKE_POST_FEED, DELETE_COMMENT_FEED } from './actions';
+import { FeedAction, SET_FEED, LIKE_POST_FEED, UNLIKE_POST_FEED, DELETE_COMMENT_FEED, FOLLOW_USER_FEED, UNFOLLOW_USER_FEED } from './actions';
 
 type FeedState = {
   items: Instalike.Post[];
@@ -40,7 +40,7 @@ const feedReducer: Reducer<FeedState, FeedAction> = (state = initalState, action
         }),
       };
 
-      case DELETE_COMMENT_FEED:
+    case DELETE_COMMENT_FEED:
       return {
         ...state,
         items: state.items.map((post) => {
@@ -55,7 +55,27 @@ const feedReducer: Reducer<FeedState, FeedAction> = (state = initalState, action
           };
         }),
       };
+      case UNFOLLOW_USER_FEED:
+        return {
+          ...state,
+          items: state.items.map((post) => {
+            if (post.id == action.payload) {
+              return { ...post, owner: { ...post.owner, isFollowedByViewer: false } };
+            }
+            return post;
+          }),
+        };
   
+      case FOLLOW_USER_FEED:
+        return {
+          ...state,
+          items: state.items.map((post) => {
+            if (post.id == action.payload) {
+              return { ...post, owner: { ...post.owner, isFollowedByViewer: true } };
+            }
+            return post;
+          }),
+        };  
     default:
       return state;
   }

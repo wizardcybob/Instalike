@@ -3,7 +3,7 @@ import { data } from 'autoprefixer';
 
 // Autres fichiers
 import type { AppThunkAction } from '../types';
-import { setUserFeed, likePostFeedAction, unlikePostFeedAction, deleteCommentFeedAction } from './actions';
+import { setUserFeed, likePostFeedAction, unlikePostFeedAction, deleteCommentFeedAction, followUserFeedAction, unfollowUserFeedAction } from './actions';
 
 
 // Users pour le feed
@@ -49,5 +49,21 @@ export const deleteCommentFeedAsync = (postId: number, commentId: number): AppTh
     } catch (e) {
       throw e;
     }
+  };
+};
+
+// Follow someone
+export const followUserFeedAsync = (postId: number, userId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    await api.users.me.followers.follow(userId);
+    dispatch(followUserFeedAction(postId));
+  };
+};
+
+// Unfollow someone
+export const unfollowUserFeedAsync = (postId: number, userId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    await api.users.me.followers.unfollow(userId);
+    dispatch(unfollowUserFeedAction(postId));
   };
 };

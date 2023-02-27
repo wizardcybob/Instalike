@@ -35,7 +35,7 @@ const PostView = () => {
       <div className="max-w-[640px] mx-auto py-16 px-4">
         {/* A POST */}
         {post && (
-              <Post key={post.id}
+              <Post post={post} key={post.id}
               postid={post.id}
               username={post.owner.userName}
               location={post.location}
@@ -46,6 +46,7 @@ const PostView = () => {
               likes={post.likesCount}
               comments={post.commentsCount}
               comment_post={post.previewComments}
+              inFeed={true}
             ></Post>
             )}
         </div>

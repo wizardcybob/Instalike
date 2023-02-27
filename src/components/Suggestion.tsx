@@ -1,12 +1,22 @@
+import { Instalike } from '@jmetterrothan/instalike';
+
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+
+// AUTRES FICHIERS
+import useAppDispatch from '../hooks/useAppDispatch';
+import { followUserSuggestionAsync, unfollowUserSuggestionAsync } from '../redux/suggestion/thunks';
+
+
 
 type SuggestionProps = {
-    firstname: string;
+    user: Instalike.User;
 };
 
-const Suggestion = ({ firstname }: SuggestionProps) => {
+const Suggestion = ({ user }: SuggestionProps) => {
+    const dispatch = useAppDispatch();
+
 
 return <>
     {/* USER / STORY */}
@@ -14,14 +24,25 @@ return <>
         <div className="relative">
             <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-24 h-24">
                 {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                <p className="uppercase text-white text-[38px]">{firstname.charAt(0)}</p>
+                <p className="uppercase text-white text-[38px]">{user.firstName.charAt(0)}</p>
             </div>
-            <button
-                className="px-2 py-[7px] text-2xl rounded-full bg-gray-300/50 flex items-center justify-center absolute right-0 bottom-0">
+            {user.isFollowedByViewer ? (
+            <button className="px-2 py-[7px] text-2xl rounded-full bg-blue-200 flex items-center justify-center absolute right-0 bottom-0" onClick={() => {
+                dispatch(unfollowUserSuggestionAsync(user));
+              }}
+            >
+                <FontAwesomeIcon className="text-[14px]" icon={faCheck} />
+            </button>
+            ) : (
+            <button className="px-2 py-[7px] text-2xl rounded-full bg-gray-300/50 flex items-center justify-center absolute right-0 bottom-0" onClick={() => {
+                dispatch(followUserSuggestionAsync(user));
+              }}
+            >
                 <FontAwesomeIcon className="text-[14px]" icon={faPlus} />
             </button>
+            )}
         </div>
-        <p className="mt-2">{firstname}</p>
+        <p className="mt-2">{user.firstName}</p>
     </li>
 </>;
 };

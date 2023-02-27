@@ -47,7 +47,7 @@ return <>
 
                 return (
                     <Suggestion key={user.id}
-                        firstname={user.firstName}
+                        user={user}
                     ></Suggestion>
                 );
                 })
@@ -60,7 +60,7 @@ return <>
                     console.log(post)
 
                     return (
-                        <Post key={post.id}
+                        <Post post={post} key={post.id}
                         postid={post.id}
                         username={post.owner.userName}
                         location={post.location}
@@ -71,6 +71,7 @@ return <>
                         likes={post.likesCount}
                         comments={post.commentsCount}
                         comment_post={post.previewComments}
+                        inFeed={true}
                         ></Post>
                     );
                 })}

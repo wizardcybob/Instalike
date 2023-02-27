@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Instalike } from '@jmetterrothan/instalike';
 import { Media } from '@jmetterrothan/instalike/dist/types/Instalike';
 
@@ -7,14 +8,18 @@ import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fort
 
 // Autres fichiers
 import useAppDispatch from '../hooks/useAppDispatch';
-import { likepostAsync, unlikePostAsync } from '../redux/feed/thunks';
-import { useState } from 'react';
+import { likepostAsync, unlikePostAsync, followUserFeedAsync, unfollowUserFeedAsync } from '../redux/feed/thunks';
+import { followUserPostAction } from '../redux/post/actions';
+import { addLikePostAsync, deleteLikePostAsync, followUserPostAsync, unfollowUserPostAsync } from '../redux/post/thunks';
+  
+
 
 // COMPOSANTS
 import Comment from './Comment';
 
 
 type PostProps = {
+    post: Instalike.Post;
     postid: number;
     username: string;
     location: string | null;
@@ -25,10 +30,11 @@ type PostProps = {
     likes: number;
     comments: number;
     comment_post: Instalike.Comment[];
+    inFeed: boolean;
 };
 
 
-const Post = ({ postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post }: PostProps) => {
+const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed }: PostProps) => {
 const dispatch = useAppDispatch();
 const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -53,7 +59,16 @@ return <>
                     </div>
                 }
             </div>
-            <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">follow</button>
+            {!post.owner.isFollowedByViewer && (
+                <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4" onClick={() => {
+                    if (inFeed) {
+                      dispatch(followUserFeedAsync(post.id, post.owner.id));
+                    } else {
+                      dispatch(followUserPostAsync(post.owner.id));
+                    }
+                  }}
+            >follow</button>
+            )}
         </div>
         <div className="relative">
             {/* ICON */}
@@ -62,7 +77,32 @@ return <>
             </div>
             {/* DROPDOWN */}
             <div className={`absolute bg-white rounded border w-32 left-0 mt-2 overflow-hidden ${dropdownOpen ? '' : 'hidden'}`}>
-                <div className="hover:bg-gray-200 p-2">Ne plus suivre</div>
+                {post.owner.isFollowedByViewer ? (
+                    <button className="hover:bg-gray-200 p-2 font-bold text-red-500 w-full text-left"
+                      onClick={() => {
+                        if (inFeed) {
+                          dispatch(unfollowUserFeedAsync(post.id, post.owner.id));
+                        } else {
+                          dispatch(unfollowUserPostAsync(post.owner.id));
+                        }
+                      }}
+                    >
+                      Unfollow
+                    </button>
+                  ) : (
+                    <button className="hover:bg-gray-200 p-2 font-bold text-blue-500 w-full text-left"
+                      onClick={() => {
+                        if (inFeed) {
+                          dispatch(followUserFeedAsync(post.id, post.owner.id));
+                        } else {
+                          dispatch(followUserPostAsync(post.owner.id));
+                        }
+                      }}
+                    >
+                      Follow
+                    </button>
+                  )}
+
                 <div className="hover:bg-gray-200 p-2">Voir la publication</div>
                 <div className="hover:bg-gray-200 p-2">Copier le lien</div>
             </div>
