@@ -18,7 +18,7 @@ const Navbar = () => {
 
 return <>
     {/* HEADER */}
-    <div className="border-b-[0.8px] dark:bg-darkblue">
+    <div className="border-b-[0.8px] dark:text-white">
         <div className="max-w-[1280px] mx-auto flex items-center justify-between px-4 py-2 h-16">
             <h1 className="instalike_title text-[44px]">Instalike</h1>
             <nav className="flex gap-5">

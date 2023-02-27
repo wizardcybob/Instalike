@@ -74,6 +74,7 @@ return <>
                         ></Post>
                     );
                 })}
+                <p className="font-bold text-center">Vous avez tout vu ! / You are all caught up !</p>
             </div>
         ) : (
             <div className="flex flex-col items-center gap-4 mt-20">

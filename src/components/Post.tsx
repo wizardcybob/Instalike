@@ -30,6 +30,7 @@ type PostProps = {
 
 const Post = ({ postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post }: PostProps) => {
 const dispatch = useAppDispatch();
+const [dropdownOpen, setDropdownOpen] = useState(false);
 
 
 
@@ -37,11 +38,11 @@ return <>
 {/* A POST */}
 <div className="border rounded-xl bg-white dark:bg-darkblue">
     {/* HEADER POST */}
-    <div className="flex justify-between p-4">
+    <div className="flex justify-between p-4 items-center">
         <div className="flex items-center gap-4">
             <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-12 h-12">
                 {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                <p className="uppercase text-white dark:text-darkblue text-xl">{username.charAt(0)}</p>
+                <p className="uppercase text-white text-xl">{username.charAt(0)}</p>
             </div>
             <div>
                 <p className="font-bold">{username}</p>
@@ -54,9 +55,19 @@ return <>
             </div>
             <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">follow</button>
         </div>
-        <div className="w-10 flex justify-center items-center">
-            <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
+        <div className="relative">
+            {/* ICON */}
+            <div className="w-10 flex justify-center items-center cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
+            </div>
+            {/* DROPDOWN */}
+            <div className={`absolute bg-white rounded border w-32 left-0 mt-2 overflow-hidden ${dropdownOpen ? '' : 'hidden'}`}>
+                <div className="hover:bg-gray-200 p-2">Ne plus suivre</div>
+                <div className="hover:bg-gray-200 p-2">Voir la publication</div>
+                <div className="hover:bg-gray-200 p-2">Copier le lien</div>
+            </div>
         </div>
+
     </div>
     {/* IMAGE POST */}
     <div className="flex justify-center items-center">

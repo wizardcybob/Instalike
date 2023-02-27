@@ -39,7 +39,7 @@ const AddPostView = () => {
         {/* HEADER */}
         <Navbar />
         {/* MODAL */}
-        <div className="max-w-[640px] mx-auto p-6 border rounded-xl mt-10 bg-white flex flex-col">
+        <div className="max-w-[640px] mx-auto p-6 border rounded-xl mt-10 flex flex-col">
             <p className="text-center font-bold text-2xl">{t('addpost.title')}</p>
             <form className="flex flex-col gap-4 mt-6" onSubmit={(event)=> {
                 event.preventDefault();
