@@ -17,8 +17,8 @@ const DiscoverPost = ({ img, likes, comments }: DiscoverPostProps) => {
 
 return <>
     {/* A DISCOVER POST */}
-    <div className="flex justify-center items-center rounded-2xl relative w-[315px] h-[315px] overflow-hidden">
-        <img className="objet-cover w-full h-full" src={img.src} alt="" />
+    <div className="flex justify-center items-center rounded-2xl relative max-w-[315px] max-h-[315px] overflow-hidden aspect-square">
+        <img className="object-cover w-full h-full" style={{objectFit: 'cover'}} src={img.src} alt="" />
         <div className="flex justify-center items-center bg-gray-900/50 absolute_card inset-0 gap-4">
             <div className="px-2 flex items-center gap-2 text-white">
                 <FontAwesomeIcon className="text-[20px]" icon={faHeart} />

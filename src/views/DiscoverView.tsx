@@ -25,14 +25,14 @@ return <>
     {/* HEADER */}
     <Navbar />
     {/* ALL DISCOVER POSTS */}
-    <div className="max-w-[995px] mx-auto mt-8 mb-16 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+    <div className="max-w-[995px] mx-auto mt-8 mb-16 px-4 flex flex-col items-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 ">
       {/* A DISCOVER POST */}
       {feedItems &&
             feedItems.map((post: Instalike.Post) => {
             console.log(post)
 
           return (
-            <Link key={post.id} to={`/post/${post.id}`}>
+            <Link key={post.id} to={`/post/${post.id}`} className="flex justify-center">
               <DiscoverPost key={post.id}
                 img={post.resources[0]}
                 likes={post.likesCount}
