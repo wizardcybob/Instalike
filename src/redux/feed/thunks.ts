@@ -9,7 +9,7 @@ import { setUserFeed, likePostFeedAction, unlikePostFeedAction, deleteCommentFee
 // Users pour le feed
 export const fetchFeedUserAsync = (): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
-    const { data } = await api.users.me.feed.fetch({ cursor: null });
+    const { data } = await api.users.me.feed.fetch({ cursor: null, amount: 12 }); // charger 12 posts que ce soit dans le feed ou le discover
     dispatch(setUserFeed(data.items));
   };
 };
