@@ -46,7 +46,7 @@ const PostView = () => {
               likes={post.likesCount}
               comments={post.commentsCount}
               comment_post={post.previewComments}
-              inFeed={true}
+              inFeed={false}
             ></Post>
             )}
         </div>

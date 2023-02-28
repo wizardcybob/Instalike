@@ -115,9 +115,11 @@ return <>
                     </button>
                   )
                 }
+                {inFeed &&
                 <button className="hover:bg-gray-200 p-2 w-full text-left">
                   <Link to={`/post/${postid}`}>Voir la publication</Link>
                 </button>
+                }
                 <button className="hover:bg-gray-200 p-2 w-full text-left" onClick={() => {
                       copyLink(window.location.origin.toString() + '/post/' + postid);
                     }}
