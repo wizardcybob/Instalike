@@ -50,27 +50,39 @@ export const fetchPost = (postid: number): AppThunkAction<Promise<void>> => {
 // Ajouter un post
 export const addPost = (resources: File[], location: string, caption: string): AppThunkAction<Promise<void>> => { //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
   return async (dispatch, getState, api) => {
-    const { data } = await api.posts.create({
-      resources: resources,
-      location: location,
-      caption: caption,
-    });
-    dispatch(setPost(data));
+    try { //laisser le try/catch wrapper sinon bug
+      const { data } = await api.posts.create({
+        resources: resources,
+        location: location,
+        caption: caption,
+      });
+      dispatch(setPost(data));
+    } catch (fff) {
+      throw fff;
+    }
   };
 };
 
 // Follow someone
 export const followUserPostAsync = (userId: number): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
-    await api.users.me.followers.follow(userId);
-    dispatch(followUserPostAction());
+    try {
+      await api.users.me.followers.follow(userId);
+      dispatch(followUserPostAction());
+    } catch (e) {
+      throw e;
+    }
   };
 };
 
 // Unfollow someone
 export const unfollowUserPostAsync = (userId: number): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
-    await api.users.me.followers.unfollow(userId);
-    dispatch(unfollowUserPostAction());
+    try {
+      await api.users.me.followers.unfollow(userId);
+      dispatch(unfollowUserPostAction());
+    } catch (e) {
+      throw e;
+    }
   };
 };

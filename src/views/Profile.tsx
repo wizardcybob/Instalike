@@ -24,7 +24,7 @@ return <>
     <div className="max-w-[640px] mx-auto py-16 px-4">
         <div className="flex flex-col items-center justify-center">
             {/* HEADER PROFILEVIEW */}
-            <div className="flex w-full gap-[30px] pb-8 border-b-2">
+            <div className="flex flex-col sm:flex-row items-center w-full gap-[30px] pb-8 border-b-2">
                 {/* ZONE PROFILE PIC */}
                 <div className="w-[292px] flex justify-center">
                     <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-[150px] h-[150px]">
@@ -32,8 +32,8 @@ return <>
                     </div>
                 </div>
                 {/* INFOS COMPTE */}
-                <div className="flex flex-col gap-4">
-                    <div className="flex gap-5 items-center">
+                <div className="flex flex-col gap-[30px] sm:gap-4">
+                    <div className="flex gap-5 justify-center items-center">
                         <p className="text-xl">Chloé</p>
                         <button className="bg-red-500 text-white font-bold h-10 rounded-md py-2 px-4" onClick={() => {
                             dispatch(logoutAsync());

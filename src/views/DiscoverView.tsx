@@ -13,6 +13,10 @@ import useFeedItems from '../hooks/useFeedItems';
 import { fetchFeedUserAsync } from '../redux/feed/thunks';
 import { Link } from 'react-router-dom';
 
+// ICONS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCompass } from '@fortawesome/free-regular-svg-icons';
+
 
 const DiscoverView = () => {
   const dispatch = useAppDispatch();
@@ -34,22 +38,35 @@ return <>
     {/* HEADER */}
     <Navbar />
     {/* ALL DISCOVER POSTS */}
-    <div className="max-w-[995px] mx-auto mt-8 mb-16 px-4 flex flex-col items-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 ">
+    <div className="max-w-[995px] mx-auto mt-8 mb-16 px-4 flex flex-col items-center">
       {/* A DISCOVER POST */}
-      {feedItems &&
-            feedItems.map((post: Instalike.Post) => {
-            console.log(post)
+      {feedItems && feedItems.length > 0 ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {feedItems &&
+              feedItems.map((post: Instalike.Post) => {
+              console.log(post)
 
-          return (
-            <Link key={post.id} to={`/post/${post.id}`} className="flex justify-center">
-              <DiscoverPost key={post.id}
-                img={post.resources[0]}
-                likes={post.likesCount}
-                comments={post.commentsCount}
-              ></DiscoverPost>
-            </Link>
-          );
-        })}
+            return (
+              <Link key={post.id} to={`/post/${post.id}`} className="flex justify-center">
+                <DiscoverPost key={post.id}
+                  img={post.resources[0]}
+                  likes={post.likesCount}
+                  comments={post.commentsCount}
+                ></DiscoverPost>
+              </Link>
+            );
+          })}
+      </div>
+      ) : (
+        <div className="flex flex-col items-center gap-4 mt-20">
+            <FontAwesomeIcon className="text-[96px]" icon={faCompass} />
+            <p className="font-bold text-xl">Votre discover est vide...</p>
+            <p className="text-center">Ajouter un post pour remplir votre discover&nbsp;!</p>
+            <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">
+              <Link to="/addpost">Ajouter un post</Link>
+            </button>
+        </div>
+      )}
     </div>
   </>;
 };

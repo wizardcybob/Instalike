@@ -58,13 +58,13 @@ const AddPostView = () => {
                 {/* LOCATION */}
                 <div className="flex flex-col gap-1">
                     <label htmlFor="location-input" className="font-bold">{t('addpost.place')} :</label>
-                    <input className="h-10 p-2 rounded-sm border" id="location-input" placeholder="Lieu" value={location} onChange={(e)=>
+                    <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="location-input" placeholder="Lieu" value={location} onChange={(e)=>
                     setLocation(e.target.value)} />
                 </div>
                 {/* DESCRIPTION */}
                 <div className="flex flex-col gap-1">
                     <label htmlFor="caption-input" className="font-bold">{t('addpost.caption')} :</label>
-                    <input className="h-10 p-2 rounded-sm border" id="caption-input" placeholder="Description" value={caption} onChange={(e)=>
+                    <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="caption-input" placeholder="Description" value={caption} onChange={(e)=>
                     setCaption(e.target.value)} />
                 </div>
                 {/* BTNS */}

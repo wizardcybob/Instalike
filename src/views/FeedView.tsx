@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Instalike } from '@jmetterrothan/instalike';
 import instalikeApi from '../instalikeApi';
+import { Link } from 'react-router-dom';
 
 
 // ICONS
@@ -85,13 +86,16 @@ return <>
                         ></Post>
                     );
                 })}
-                <p className="font-bold text-center">Vous avez tout vu ! / You are all caught up !</p>
+                <p className="font-bold text-center">Vous avez tout vu&nbsp;! / You are all caught up&nbsp;!</p>
             </div>
         ) : (
             <div className="flex flex-col items-center gap-4 mt-20">
                 <FontAwesomeIcon className="text-[96px]" icon={faHouse} />
-                <p className="font-bold text-xl">Votre feed est vide</p>
-                <p>Vous devriez suivre des utilisateurs pour remplir votre feed...</p>
+                <p className="font-bold text-xl">Votre feed est vide...</p>
+                <p>Vous devriez suivre des utilisateurs pour remplir votre feed&nbsp;!</p>
+                <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">
+                  <Link to="/discover">Découvrir des posts</Link>
+                </button>
             </div>
         )}
 
