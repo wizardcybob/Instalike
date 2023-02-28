@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { Instalike } from '@jmetterrothan/instalike';
+import instalikeApi from '../instalikeApi';
+
 
 // COMPOSANTS
 import Navbar from '../components/Navbar';
@@ -14,6 +16,13 @@ import { Link } from 'react-router-dom';
 
 const DiscoverView = () => {
   const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   instalikeApi.posts.fetch({ cursor: null });
+  //   instalikeApi.users.me.fetch();
+  //   instalikeApi.users.find(1).fetch();
+  // }, []);
+
   useEffect(() => {
     dispatch(fetchFeedUserAsync());
   }, []);

@@ -14,6 +14,8 @@ import './i18n';
 
 
 function App() {
+  useAuthInterceptors();
+
   return (
     <Routes>
       <Route path="login" element={<LoginView />} />

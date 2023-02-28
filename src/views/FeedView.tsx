@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { Instalike } from '@jmetterrothan/instalike';
+import instalikeApi from '../instalikeApi';
+
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,6 +24,14 @@ import { fetchSuggestionAsync } from '../redux/suggestion/thunks';
 
 const FeedView = () => {
     const dispatch = useAppDispatch();
+
+    // useEffect(() => {
+    //     console.log('fetch');
+    //     instalikeApi.posts.fetch({ cursor: null });
+    //     instalikeApi.users.me.fetch();
+    //     instalikeApi.users.find(1).fetch();
+    //   }, []);
+    
     useEffect(() => {
       dispatch(fetchFeedUserAsync());
     }, []);

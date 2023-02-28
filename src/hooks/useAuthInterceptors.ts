@@ -1,9 +1,9 @@
 import { AxiosError } from 'axios';
 import { useEffect } from 'react';
-
-import { logoutAsync } from '../redux/auth/thunks';
-
 import instalikeApi from '../instalikeApi';
+
+// AUTRES FICHIERS
+import { logoutAsync } from '../redux/auth/thunks';
 import useAppDispatch from './useAppDispatch';
 
 const useAuthInterceptors = () => {
@@ -18,6 +18,7 @@ const useAuthInterceptors = () => {
             dispatch(logoutAsync());
           }
         }
+        //return Promise.reject(e);
       }
     );
 
