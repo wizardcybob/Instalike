@@ -52,7 +52,7 @@ async function copyLink(text: string) {
 
 return <>
 {/* A POST */}
-<div className="border rounded-xl bg-white dark:bg-darkblue">
+<div className="border rounded-xl bg-white dark:bg-darkblue overflow-hidden">
     {/* HEADER POST */}
     <div className="flex justify-between p-4 items-center">
         <div className="flex items-center gap-4">
@@ -84,7 +84,7 @@ return <>
         </div>
         <div className="relative">
             {/* ICON */}
-            <div className="w-10 flex justify-center items-center cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}>
+            <div className="w-5 md:w-10 flex justify-center items-center cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}>
                 <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
             </div>
             {/* DROPDOWN */}

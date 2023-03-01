@@ -22,9 +22,9 @@ return <>
     {/* USER / STORY */}
     <li className="flex flex-col items-center">
         <div className="relative">
-            <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-24 h-24">
+            <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-16 md:w-24 h-16 md:h-24">
                 {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                <p className="uppercase text-white text-[38px]">{user.firstName.charAt(0)}</p>
+                <p className="uppercase text-white text-2xl md:text-[38px]">{user.firstName.charAt(0)}</p>
             </div>
             {user.isFollowedByViewer ? (
             <button className="px-2 py-[7px] text-2xl rounded-full bg-blue-200 flex items-center justify-center absolute right-0 bottom-0" onClick={() => {
@@ -38,7 +38,7 @@ return <>
                 dispatch(followUserSuggestionAsync(user));
               }}
             >
-                <FontAwesomeIcon className="text-[14px]" icon={faPlus} />
+                <FontAwesomeIcon className="text-[10px] md:text-sm" icon={faPlus} />
             </button>
             )}
         </div>

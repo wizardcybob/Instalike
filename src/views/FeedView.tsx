@@ -51,7 +51,7 @@ return <>
     {/* FEEDVIEW */}
     <div className="max-w-[640px] mx-auto mt-8 mb-16 px-4">
         {/* USERS / STORIES */}
-        <ul className="flex gap-8">
+        <ul className="flex flex-wrap justify-center gap-8">
             {/* USER / STORY */}
             {suggestionItems && //ici
                 suggestionItems.map((user) => {
@@ -91,9 +91,9 @@ return <>
         ) : (
             <div className="flex flex-col items-center gap-4 mt-20">
                 <FontAwesomeIcon className="text-[96px]" icon={faHouse} />
-                <p className="font-bold text-xl">Votre feed est vide...</p>
-                <p>Vous devriez suivre des utilisateurs pour remplir votre feed&nbsp;!</p>
-                <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">
+                <p className="font-bold text-xl text-center">Votre feed est vide...</p>
+                <p className="text-center">Vous devriez suivre des utilisateurs pour remplir votre feed&nbsp;!</p>
+                <button className="bg-gray-400 hover:bg-gray-600 text-white font-bold h-10 rounded-md py-2 px-4">
                   <Link to="/discover">Découvrir des posts</Link>
                 </button>
             </div>

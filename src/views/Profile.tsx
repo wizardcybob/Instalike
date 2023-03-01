@@ -35,14 +35,14 @@ return <>
                 <div className="flex flex-col gap-[30px] sm:gap-4">
                     <div className="flex gap-5 justify-center items-center">
                         <p className="text-xl">Chloé</p>
-                        <button className="bg-red-500 text-white font-bold h-10 rounded-md py-2 px-4" onClick={() => {
+                        <button className="bg-red-600 hover:bg-red-800 text-white font-bold h-10 rounded-md py-2 px-4" onClick={() => {
                             dispatch(logoutAsync());
                             }}>Se déconnecter</button>
                     </div>
                     <div className="flex gap-10">
                         <div className="flex flex-col items-center">
                             <p>XX</p>
-                            <p>publications</p>
+                            <p>posts</p>
                         </div>
                         <div className="flex flex-col items-center">
                             <p>XX</p>
@@ -56,25 +56,25 @@ return <>
                 </div>
             </div>
             {/* CHANGEMENT DE LANGUE */}
-            <div className="flex gap-10 mt-10">
-                <button className="bg-blue-500 text-white font-bold h-10 rounded-md mt-2 py-2 px-4"
+            <div className="flex flew-wrap gap-10 mt-10">
+                <button className="bg-blue-500 text-white font-bold h-10 rounded-md py-2 px-4"
                 type="button"
                 onClick={() => {
                     i18n.changeLanguage(Language.EN);
                 }}
                 >
-                {t('languages.english')}
+                    {t('languages.english')}
                 </button>
-                <button className="bg-blue-500 text-white font-bold h-10 rounded-md mt-2 py-2 px-4"
+                <button className="bg-blue-500 text-white font-bold h-10 rounded-md py-2 px-4"
                 type="button"
                 onClick={() => {
                     i18n.changeLanguage(Language.FR);
                 }}
                 >
-                {t('languages.french')}
+                    {t('languages.french')}
                 </button>
             </div>
-            <p>{t('languages.aaa')}</p>
+            <p className="mt-8 text-center">{t('languages.actual')}</p>
         </div>
     </div>
 

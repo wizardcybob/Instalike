@@ -60,9 +60,9 @@ return <>
       ) : (
         <div className="flex flex-col items-center gap-4 mt-20">
             <FontAwesomeIcon className="text-[96px]" icon={faCompass} />
-            <p className="font-bold text-xl">Votre discover est vide...</p>
+            <p className="font-bold text-xl text-center">Votre discover est vide...</p>
             <p className="text-center">Ajouter un post pour remplir votre discover&nbsp;!</p>
-            <button className="bg-gray-400 text-white font-bold h-10 rounded-md py-2 px-4">
+            <button className="bg-gray-400 hover:bg-gray-600 text-white font-bold h-10 rounded-md py-2 px-4">
               <Link to="/addpost">Ajouter un post</Link>
             </button>
         </div>

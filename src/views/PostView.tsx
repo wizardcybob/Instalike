@@ -32,7 +32,7 @@ const PostView = () => {
     <div className="h-full">
       {/* HEADER */}
       <Navbar />
-      <div className="max-w-[640px] mx-auto py-16 px-4">
+      <div className="max-w-[640px] mx-auto py-10 md:py-16 px-4">
         {/* A POST */}
         {post && (
               <Post post={post} key={post.id}
