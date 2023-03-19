@@ -88,9 +88,9 @@ return <>
                 <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
             </div>
             {/* DROPDOWN */}
-            <div className={`absolute bg-white rounded border w-32 left-0 mt-2 overflow-hidden ${dropdownOpen ? '' : 'hidden'}`}>
+            <div className={`absolute bg-white dark:bg-darkblue rounded border w-32 right-0 mt-4 overflow-hidden ${dropdownOpen ? '' : 'hidden'}`}>
                 {post.owner.isFollowedByViewer ? (
-                    <button className="hover:bg-gray-200 p-2 font-bold text-red-500 w-full text-left"
+                    <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 font-bold text-red-500 w-full text-left"
                       onClick={() => {
                         if (inFeed) {
                           dispatch(unfollowUserFeedAsync(post.id, post.owner.id));
@@ -102,7 +102,7 @@ return <>
                       Unfollow
                     </button>
                   ) : (
-                    <button className="hover:bg-gray-200 p-2 font-bold text-blue-500 w-full text-left"
+                    <button className="hover:bg-gray-200 p-2 dark:hover:bg-gray-700 font-bold text-blue-500 w-full text-left"
                       onClick={() => {
                         if (inFeed) {
                           dispatch(followUserFeedAsync(post.id, post.owner.id));
@@ -116,11 +116,11 @@ return <>
                   )
                 }
                 {inFeed &&
-                <button className="hover:bg-gray-200 p-2 w-full text-left">
+                <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left">
                   <Link to={`/post/${postid}`}>Voir la publication</Link>
                 </button>
                 }
-                <button className="hover:bg-gray-200 p-2 w-full text-left" onClick={() => {
+                <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left" onClick={() => {
                       copyLink(window.location.origin.toString() + '/post/' + postid);
                     }}
                 >Copier le lien</button>
@@ -137,7 +137,7 @@ return <>
         {caption && <p className="mb-3">{caption}</p>}
         <div className="flex gap-2">
             {isLiked ? (
-                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'gray-400'} rounded-full flex items-center gap-2`}
+                <button className={`px-4 py-1 bg-${isLiked ? 'blue-500' : 'gray-400'} rounded-full flex items-center gap-2`}
                   onClick={() => {
                     dispatch(unlikePostAsync(postid));
                   }}
@@ -146,7 +146,7 @@ return <>
                     <span className="mt-1">{likes}</span>
                 </button>
               ) : (
-                <button className={`px-4 py-1 bg-${isLiked ? 'red-500' : 'gray-400'} rounded-full flex items-center gap-2`}
+                <button className={`px-4 py-1 bg-${isLiked ? 'blue-500' : 'gray-400'} rounded-full flex items-center gap-2`}
                   onClick={() => {
                     dispatch(likepostAsync(postid));
                   }}
