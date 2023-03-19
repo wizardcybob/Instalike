@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import useAppDispatch from '../hooks/useAppDispatch';
+import { Link, useNavigate } from 'react-router-dom';
 import { logoutAsync } from '../redux/auth/thunks';
 
 // LANGUAGE
@@ -8,13 +6,31 @@ import i18n from 'i18next';
 import {useTranslation} from "react-i18next";
 import Language from '../assets/enums/Language';
 
+// COMPOSANTS
+import Navbar from '../components/Navbar';
+import DiscoverPost from '../components/DiscoverPost';
 
+// AUTRES FICHIERS
+import useAppDispatch from '../hooks/useAppDispatch';
+import useFeedItems from '../hooks/useFeedItems';
+import { fetchProfileAsync } from '../redux/feed/thunks';
+
+// ICONS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCompass } from '@fortawesome/free-regular-svg-icons';
+import { useEffect } from 'react';
 
 
 const Profile = () => {
     const { t,i18n } = useTranslation();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        dispatch(fetchProfileAsync());
+    }, []);
+
+    const feedItems = useFeedItems();
 
 
 return <>
@@ -75,6 +91,37 @@ return <>
                 </button>
             </div>
             <p className="mt-8 text-center">{t('languages.actual')}</p>
+            {/* ALL DISCOVER POSTS */}
+            <div className="max-w-[995px] mx-auto mt-8 mb-16 px-4 flex flex-col items-center">
+                {/* A DISCOVER POST */}
+                {feedItems && feedItems.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                    {feedItems &&
+                        feedItems.map((post: Instalike.Post) => {
+                        console.log(post)
+
+                        return (
+                        <Link key={post.id} to={`/post/${post.id}`} className="flex justify-center">
+                            <DiscoverPost key={post.id}
+                            img={post.resources[0]}
+                            likes={post.likesCount}
+                            comments={post.commentsCount}
+                            ></DiscoverPost>
+                        </Link>
+                        );
+                    })}
+                </div>
+                ) : (
+                    <div className="flex flex-col items-center gap-4 mt-20">
+                        <FontAwesomeIcon className="text-[96px]" icon={faCompass} />
+                        <p className="font-bold text-xl text-center">Votre discover est vide...</p>
+                        <p className="text-center">Ajouter un post pour remplir votre discover&nbsp;!</p>
+                        <button className="bg-gray-400 hover:bg-gray-600 text-white font-bold h-10 rounded-md py-2 px-4">
+                        <Link to="/addpost">Ajouter un post</Link>
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     </div>
 
