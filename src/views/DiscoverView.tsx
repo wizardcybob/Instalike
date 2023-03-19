@@ -10,7 +10,7 @@ import DiscoverPost from '../components/DiscoverPost';
 // AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
-import { fetchFeedUserAsync } from '../redux/feed/thunks';
+import { fetchDiscoverAsync } from '../redux/feed/thunks';
 import { Link } from 'react-router-dom';
 
 // ICONS
@@ -28,7 +28,7 @@ const DiscoverView = () => {
   // }, []);
 
   useEffect(() => {
-    dispatch(fetchFeedUserAsync());
+    dispatch(fetchDiscoverAsync());
   }, []);
 
   const feedItems = useFeedItems();

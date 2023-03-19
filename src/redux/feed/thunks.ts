@@ -6,10 +6,10 @@ import type { AppThunkAction } from '../types';
 import { setUserFeed, likePostFeedAction, unlikePostFeedAction, deleteCommentFeedAction, followUserFeedAction, unfollowUserFeedAction } from './actions';
 
 
-// Users pour le feed
+// User posts for feed
 export const fetchFeedUserAsync = (): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
-    const { data } = await api.users.me.feed.fetch({ cursor: null, amount: 12 }); // charger 12 posts que ce soit dans le feed ou le discover
+    const { data } = await api.users.me.feed.fetch({ cursor: null, amount: 12 }); // chargement de 12 posts
     dispatch(setUserFeed(data.items));
   };
 };
@@ -64,4 +64,12 @@ export const unfollowUserFeedAsync = (postId: number, userId: number): AppThunkA
     await api.users.me.followers.unfollow(userId);
     dispatch(unfollowUserFeedAction(postId));
   };
+};
+
+// User posts for discover
+export const fetchDiscoverAsync = (): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    const { data } = await api.posts.fetch({ cursor: null, amount: 20 });
+    dispatch(setUserFeed(data.items));
+  }
 };
