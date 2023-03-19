@@ -81,3 +81,12 @@ export const fetchProfileAsync = (): AppThunkAction<Promise<void>> => {
     dispatch(setUserFeed(data.items));
   }
 };
+
+// Data user connected
+// export const fetchProfileDataAsync = (): AppThunkAction<Promise<void>> => {
+//   return async (dispatch, getState, api) => {
+//     const { data } = await api.users.me.fetch();
+//     console.log(data.id);
+//     dispatch(setUserFeed(data.items));
+//   }
+// };

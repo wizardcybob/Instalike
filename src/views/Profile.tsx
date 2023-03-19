@@ -13,7 +13,7 @@ import DiscoverPost from '../components/DiscoverPost';
 // AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
-import { fetchProfileAsync } from '../redux/feed/thunks';
+import { fetchProfileAsync, fetchProfileDataAsync } from '../redux/feed/thunks';
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,6 +31,11 @@ const Profile = () => {
     }, []);
 
     const feedItems = useFeedItems();
+
+    // console.log("Before calling fetchProfileDataAsync");
+    //dispatch(fetchProfileDataAsync());
+    // console.log("After calling fetchProfileDataAsync");
+
 
 
 return <>
@@ -95,10 +100,10 @@ return <>
             <div className="max-w-[995px] mx-auto mt-8 mb-16 px-4 flex flex-col items-center">
                 {/* A DISCOVER POST */}
                 {feedItems && feedItems.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {feedItems &&
                         feedItems.map((post: Instalike.Post) => {
-                        console.log(post)
+                        // console.log(post)
 
                         return (
                         <Link key={post.id} to={`/post/${post.id}`} className="flex justify-center">
