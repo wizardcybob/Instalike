@@ -8,7 +8,7 @@ export const REQUEST_POST_SUCCESS = 'POST/REQUEST_FEED_SUCCESS';
 export const REQUEST_POST_FAILURE = 'POST/REQUEST_FEED_FAILURE';
 export const UNFOLLOW_USER_POST = 'POST/UNFOLLOW_USER_POST';
 export const FOLLOW_USER_POST = 'POST/FOLLOW_USER_POST';
-
+export const DELETE_POST = 'POST/DELETE_POST';
 
 
 export type setPostAction = AppAction<typeof SET_POST, Instalike.Post>;
@@ -17,9 +17,11 @@ export type LoadPostEndSucessAction = AppAction<typeof REQUEST_POST_SUCCESS>;
 export type LoadPostEndFailureAction = AppAction<typeof REQUEST_POST_FAILURE>;
 export type unfollowUserPostAction = AppAction<typeof UNFOLLOW_USER_POST>;
 export type followUserPostAction = AppAction<typeof FOLLOW_USER_POST>;
+export type deletePostAction = AppAction<typeof DELETE_POST>;
 
 
-export type PostAction = setPostAction | LoadPostStartAction | LoadPostEndSucessAction | LoadPostEndFailureAction | followUserPostAction | unfollowUserPostAction;
+
+export type PostAction = setPostAction | LoadPostStartAction | LoadPostEndSucessAction | LoadPostEndFailureAction | followUserPostAction | unfollowUserPostAction | deletePostAction;
 
 
 export const setPost = (data: Instalike.Post): setPostAction => ({
@@ -49,5 +51,10 @@ export const unfollowUserPostAction = (): unfollowUserPostAction => ({
 
 export const followUserPostAction = (): followUserPostAction => ({
   type: FOLLOW_USER_POST,
+  payload: undefined,
+});
+
+export const deletePostAction = (): deletePostAction => ({
+  type: DELETE_POST,
   payload: undefined,
 });

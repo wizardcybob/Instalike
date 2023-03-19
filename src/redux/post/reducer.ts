@@ -1,7 +1,7 @@
 import { Instalike } from '@jmetterrothan/instalike';
 import { Reducer } from 'redux';
 
-import { PostAction, SET_POST } from './actions';
+import { PostAction, SET_POST, DELETE_POST } from './actions';
 import { SetLikeFeedAction, SetUnlikeFeedAction, LIKE_POST_FEED, UNLIKE_POST_FEED, UNFOLLOW_USER_FEED, FOLLOW_USER_FEED } from '../feed/actions'
 
 type PostState = {
@@ -36,6 +36,8 @@ const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlike
         return { ...state, data: { ...state.data, owner: { ...state.data.owner, isFollowedByViewer: true } } };  
       }
       return state;
+    case DELETE_POST:
+      return { ...state, data: { ...state.data, id: -1 } };
     default:
       return state;
   }

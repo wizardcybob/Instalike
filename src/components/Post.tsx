@@ -11,7 +11,7 @@ import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fort
 import useAppDispatch from '../hooks/useAppDispatch';
 import { likepostAsync, unlikePostAsync, followUserFeedAsync, unfollowUserFeedAsync } from '../redux/feed/thunks';
 import { followUserPostAction } from '../redux/post/actions';
-import { addLikePostAsync, deleteLikePostAsync, followUserPostAsync, unfollowUserPostAsync } from '../redux/post/thunks';
+import { addLikePostAsync, deleteLikePostAsync, followUserPostAsync, unfollowUserPostAsync, deletePostAsync } from '../redux/post/thunks';
   
 
 
@@ -84,11 +84,23 @@ return <>
         </div>
         <div className="relative">
             {/* ICON */}
-            <div className="w-5 md:w-10 flex justify-center items-center cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
+            <div role="button" tabIndex={0} className="w-5 md:w-10 flex justify-center items-center cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)} onKeyDown={(event) => event.key === 'Enter' && setDropdownOpen(!dropdownOpen)}>
+              <FontAwesomeIcon className="text-[22px]" icon={faEllipsisVertical} />
             </div>
+
             {/* DROPDOWN */}
             <div className={`absolute bg-white dark:bg-darkblue rounded border w-32 right-0 mt-4 overflow-hidden ${dropdownOpen ? '' : 'hidden'}`}>
+                {/* DELETE POST */}
+                {post.owner.isViewer && (
+                  <button className="hover:bg-gray-200 p-2 dark:hover:bg-gray-700 font-bold text-blue-500 w-full text-left"
+                    onClick={() => {
+                      dispatch(deletePostAsync(post.id));
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                )}
+                {/* FOLLOW / UNFOLLOW */}
                 {post.owner.isFollowedByViewer ? (
                     <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 font-bold text-red-500 w-full text-left"
                       onClick={() => {
@@ -115,11 +127,13 @@ return <>
                     </button>
                   )
                 }
+                {/* SEE PUBLICATION */}
                 {inFeed &&
-                <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left">
-                  <Link to={`/post/${postid}`}>Voir la publication</Link>
-                </button>
+                  <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left">
+                    <Link to={`/post/${postid}`}>Voir la publication</Link>
+                  </button>
                 }
+                {/* COPY LINK */}
                 <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left" onClick={() => {
                       copyLink(window.location.origin.toString() + '/post/' + postid);
                     }}

@@ -86,3 +86,15 @@ export const unfollowUserPostAsync = (userId: number): AppThunkAction<Promise<vo
     }
   };
 };
+
+// Delete post
+export const deletePostAsync = (postId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    try {
+      await api.posts.find(postId).delete();
+      dispatch(deletePostAction());
+    } catch (e) {
+      throw e;
+    }
+  };
+};
