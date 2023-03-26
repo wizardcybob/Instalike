@@ -47,6 +47,7 @@ const PostView = () => {
               comments={post.commentsCount}
               comment_post={post.previewComments}
               inFeed={false}
+              comment_able={post.hasCommentsDisabled}
             ></Post>
             )}
         </div>

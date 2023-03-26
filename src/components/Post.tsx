@@ -33,12 +33,12 @@ type PostProps = {
     comments: number;
     comment_post: Instalike.Comment[];
     inFeed: boolean;
-    canCommment: boolean;
+    comment_able: boolean;
 };
 
 
 
-const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed, canCommment }: PostProps) => {
+const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed, comment_able }: PostProps) => {
   const dispatch = useAppDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [navigateToPost, setnavigateToPost] = useState(false);
@@ -180,9 +180,11 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
           </div>
       </div>
       {/* ADD COMMENT */}
+      {comment_able === false &&
         <div>
           <AddComment idPost={post.id} key={post.id}></AddComment>
         </div>
+      }
       {/* COMMENTS POST */}
       <div className={`border-t-${comments > 0 ? '[0.8px] p-4' : '0' } flex flex-col gap-4`}>
           <Comment tab_comments={comment_post}></Comment>
