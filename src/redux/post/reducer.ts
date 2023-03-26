@@ -1,7 +1,7 @@
 import { Instalike } from '@jmetterrothan/instalike';
 import { Reducer } from 'redux';
 
-import { PostAction, SET_POST, DELETE_POST } from './actions';
+import { PostAction, SET_POST, DELETE_POST, COMMENT_POST } from './actions';
 import { SetLikeFeedAction, SetUnlikeFeedAction, LIKE_POST_FEED, UNLIKE_POST_FEED, UNFOLLOW_USER_FEED, FOLLOW_USER_FEED } from '../feed/actions'
 
 type PostState = {
@@ -12,7 +12,7 @@ const intialState: PostState = {
   data: undefined,
 };
 
-const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlikeFeedAction | unfollowUserFeedAction | followUserFeedAction> = (state = intialState, action) => {
+const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlikeFeedAction | unfollowUserFeedAction | followUserFeedAction | commentPostAction> = (state = intialState, action) => {
   switch (action.type) {
     case SET_POST:
       return { ...state, data: action.payload };
@@ -38,6 +38,11 @@ const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlike
       return state;
     case DELETE_POST:
       return { ...state, data: { ...state.data, id: -1 } };
+    case COMMENT_POST:
+      if (state.data) {
+        return { ...state, previewComments: state.data.previewComments.push(action.payload), };
+      }
+      return state;  
     default:
       return state;
   }

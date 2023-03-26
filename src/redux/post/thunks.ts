@@ -3,7 +3,7 @@ import { data } from 'autoprefixer';
 
 // AUTRES FICHIERS
 import { AppThunkAction } from '../types';
-import { failurePostAction, loadPostAction, setPost, sucessPostAction, followUserPostAction, unfollowUserPostAction } from './actions';
+import { failurePostAction, loadPostAction, setPost, sucessPostAction, followUserPostAction, unfollowUserPostAction, postCommentAction } from './actions';
 
 
 // Calcul temps de publication d'un post / commentaire
@@ -93,6 +93,19 @@ export const deletePostAsync = (postId: number): AppThunkAction<Promise<void>> =
     try {
       await api.posts.find(postId).delete();
       dispatch(deletePostAction());
+    } catch (e) {
+      throw e;
+    }
+  };
+};
+
+// Add comment
+export const postNewCommentAsync = (comment: string, postId: number): AppThunkAction<Promise<void>> => {
+  return async (dispatch, getState, api) => {
+    try {
+      const { data } = await api.posts.find(postId).comments.create({ text: comment, mentions: [] });
+      dispatch(postCommentAction(data));
+      //dispatch(addOneCounterCommentAction());
     } catch (e) {
       throw e;
     }

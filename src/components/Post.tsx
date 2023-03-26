@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Instalike } from '@jmetterrothan/instalike';
 import { Media } from '@jmetterrothan/instalike/dist/types/Instalike';
@@ -17,6 +17,7 @@ import { addLikePostAsync, deleteLikePostAsync, followUserPostAsync, unfollowUse
 
 // COMPOSANTS
 import Comment from './Comment';
+import AddComment from './AddComment';
 
 
 type PostProps = {
@@ -32,10 +33,12 @@ type PostProps = {
     comments: number;
     comment_post: Instalike.Comment[];
     inFeed: boolean;
+    canCommment: boolean;
 };
 
 
-const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed }: PostProps) => {
+
+const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed, canCommment }: PostProps) => {
   const dispatch = useAppDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [navigateToPost, setnavigateToPost] = useState(false);
@@ -176,6 +179,10 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
               </button>
           </div>
       </div>
+      {/* ADD COMMENT */}
+        <div>
+          <AddComment idPost={post.id} key={post.id}></AddComment>
+        </div>
       {/* COMMENTS POST */}
       <div className={`border-t-${comments > 0 ? '[0.8px] p-4' : '0' } flex flex-col gap-4`}>
           <Comment tab_comments={comment_post}></Comment>
