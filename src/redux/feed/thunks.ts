@@ -77,7 +77,7 @@ export const fetchDiscoverAsync = (): AppThunkAction<Promise<void>> => {
 // Own posts for profile
 export const fetchProfileAsync = (): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
-    const { data } = await api.users.me.posts.fetch({ cursor: null, amount: 20 });
+    const { data } = await api.users.me.posts.fetch({ cursor: null, amount: 50 });
     dispatch(setUserFeed(data.items));
   }
 };

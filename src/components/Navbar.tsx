@@ -24,7 +24,9 @@ const Navbar = () => {
       {/* HEADER */}
       <div className="border-b-[0.8px] dark:text-white">
         <div className="max-w-[1280px] mx-auto flex items-center justify-between px-4 py-2 h-16">
-          <h1 className="instalike_title text-[44px]">Instalike</h1>
+          <Link to="/feed">
+            <h1 className="instalike_title text-[44px]">Instalike</h1>
+          </Link>
           <nav className="hidden sm:flex gap-5">
             {/* HOME */}
             <Link to="/feed">

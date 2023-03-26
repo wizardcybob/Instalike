@@ -13,7 +13,7 @@ const AddComment = ({ idPost }: commentProps) => {
   const [comment, setComment] = useState('');
   return (
     <>
-      <div className="flex justify-center px-4 gap-4">
+      <div className="flex justify-center px-4 gap-4 pb-4">
         <input
           type="text"
           value={comment}
@@ -27,6 +27,7 @@ const AddComment = ({ idPost }: commentProps) => {
             }
           }}
           className="border border-gray-400 p-2 rounded-md w-full"
+          placeholder="Ajouter un commentaire"
         ></input>
         <button
           onClick={() => {
