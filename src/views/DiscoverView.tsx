@@ -49,7 +49,7 @@ return <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {feedItems &&
               feedItems.map((post: Instalike.Post) => {
-              console.log(post)
+              //console.log(post)
 
             return (
               <Link key={post.id} to={`/post/${post.id}`} className="flex justify-center">

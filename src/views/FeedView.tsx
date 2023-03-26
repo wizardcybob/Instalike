@@ -73,7 +73,7 @@ return <>
             <div className="flex flex-col gap-10 mt-10">
                 {/* POSTS */}
                 {feedItems.map((post: Instalike.Post) => {
-                    console.log(post)
+                    //console.log(post)
 
                     return (
                         <Post post={post} key={post.id}

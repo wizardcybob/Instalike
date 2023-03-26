@@ -33,7 +33,7 @@ const AddComment = ({ idPost }: commentProps) => {
               setComment('');
             }
           }}
-          className="border border-gray-400 p-2 rounded-md w-full"
+          className="border border-gray-400 dark:bg-darkblue p-2 rounded-md w-full"
           placeholder={t('addcomment_view.add_comment')}
         ></input>
         <button
