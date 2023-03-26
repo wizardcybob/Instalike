@@ -48,13 +48,14 @@ export const fetchPost = (postid: number): AppThunkAction<Promise<void>> => {
 
 
 // Ajouter un post
-export const addPost = (resources: File[], location: string, caption: string): AppThunkAction<Promise<void>> => { //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
+export const addPost = (resources: File[], location: string, caption: string, hasCommentsDisabled: boolean): AppThunkAction<Promise<void>> => { //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
   return async (dispatch, getState, api) => {
     try { //laisser le try/catch wrapper sinon bug
       const { data } = await api.posts.create({
         resources: resources,
         location: location,
         caption: caption,
+        hasCommentsDisabled: hasCommentsDisabled,
       });
       dispatch(setPost(data));
     } catch (fff) {

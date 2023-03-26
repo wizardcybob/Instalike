@@ -21,6 +21,7 @@ const AddPostView = () => {
     const [selectedImg, setSelectedImg] = useState<File[]>([]);
     const [location, setLocation] = useState("");
     const [caption, setCaption] = useState("");
+    const [hasCommentsDisabled, setComment] = useState(false);
     const [redirect, setRedirect] = useState(false);
     const post = usePost().items || { id: -1 }; // Initialisation de post avec un objet par défaut
 
@@ -44,7 +45,7 @@ const AddPostView = () => {
                 <p className="text-center font-bold text-2xl">{t('addpost.title')}</p>
                 <form className="flex flex-col gap-4 mt-6" onSubmit={(event)=> {
                     event.preventDefault();
-                    dispatch(addPost(selectedImg, location, caption)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
+                    dispatch(addPost(selectedImg, location, caption, hasCommentsDisabled)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
                 }}>
                     {/* IMAGE */}
                     <div className="flex flex-col gap-1">
@@ -67,6 +68,11 @@ const AddPostView = () => {
                         <label htmlFor="caption-input" className="font-bold">{t('addpost.caption')} :</label>
                         <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="caption-input" placeholder="Description" value={caption} onChange={(e)=>
                         setCaption(e.target.value)} />
+                    </div>
+                    {/* POSSIBILITE DE COMMENTER */}
+                    <div className="flex items-center gap-2">
+                        <label htmlFor="comment-checkbox" className="font-bold">Désactiver les commentaires :</label>
+                        <input className="w-4 h-4" type="checkbox" id="comment-checkbox" checked={hasCommentsDisabled} onChange={(e) => setComment(e.target.checked)} />
                     </div>
                     {/* BTNS */}
                     <div className="grid grid-cols-2 gap-4 mt-6">

@@ -180,14 +180,19 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
           </div>
       </div>
       {/* ADD COMMENT */}
-      {comment_able === false &&
-        <div>
-          <AddComment idPost={post.id} key={post.id}></AddComment>
-        </div>
-      }
+      {comment_able ? (
+      <div className="p-4">
+        <p className="italic text-center text-sm">Il n'est pas possible de commenter sous ce post...</p>
+      </div>
+      ) : (
+      <div>
+        <AddComment idPost={post.id} key={post.id}></AddComment>
+      </div>
+      )}
+
       {/* COMMENTS POST */}
       <div className={`border-t-${comments > 0 ? '[0.8px] p-4' : '0' } flex flex-col gap-4`}>
-          <Comment tab_comments={comment_post}></Comment>
+        <Comment tab_comments={comment_post}></Comment>
       </div>
   </div>
   </>;
