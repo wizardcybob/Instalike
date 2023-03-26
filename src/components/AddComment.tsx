@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+// LANGUAGE
+import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
+import Language from '../assets/enums/Language';
+
+// AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import { postNewCommentAsync } from '../redux/post/thunks';
 
@@ -8,6 +14,7 @@ type commentProps = {
 };
 
 const AddComment = ({ idPost }: commentProps) => {
+  const { t,i18n } = useTranslation();
   const [isPickerVisible, setPickerVisible] = useState(false);
   const dispatch = useAppDispatch();
   const [comment, setComment] = useState('');
@@ -27,7 +34,7 @@ const AddComment = ({ idPost }: commentProps) => {
             }
           }}
           className="border border-gray-400 p-2 rounded-md w-full"
-          placeholder="Ajouter un commentaire"
+          placeholder={t('addcomment_view.add_comment')}
         ></input>
         <button
           onClick={() => {
@@ -35,7 +42,7 @@ const AddComment = ({ idPost }: commentProps) => {
             setComment('');
           }}
         >
-          <div className="bg-gray-500 text-white font-bold h-10 rounded-md flex items-center px-4">Publier</div>
+          <div className="bg-gray-500 text-white font-bold h-10 rounded-md flex items-center px-4">{t('actions.publish')}</div>
         </button>
       </div>
     </>

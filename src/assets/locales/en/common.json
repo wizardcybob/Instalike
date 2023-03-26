@@ -4,15 +4,56 @@
         "french": "french",
         "english": "english"
     },
-    "actions": {
-        "follow": "follow",
-        "send": "send",
-        "cancel": "cancel"
+    "menu": {
+        "home": "Home",
+        "discover": "Discover",
+        "add_post": "Add a post",
+        "my_profile": "My profile"
     },
-    "addpost": {
+    "actions": {
+        "follow": "Follow",
+        "unfollow": "Unfollow",
+        "send": "send",
+        "cancel": "cancel",
+        "delete": "Delete",
+        "publish": "Publish",
+        "logout": "Log out",
+        "see_post": "See the post",
+        "copy_link": "Copy link"
+    },
+    "feed_view": {
+        "text1": "You are all caught up\u00A0!",
+        "text2": "Your feed is empty...",
+        "text3": "You should follow users to fill your feed\u00A0!",
+        "text_btn1": "Discover posts"
+    },
+    "discover_view": {
+        "text1": "Your discover is empty...",
+        "text2": "Add a post to complete your discover\u00A0!",
+        "text_btn1": "Add a post"
+    },
+    "profile_view": {
+        "my_account": "My account",
+        "posts": "posts",
+        "followers": "followers",
+        "follows": "follows",
+        "text1": "You haven't posted any photos yet...",
+        "text2": "Add a post to complete your profile\u00A0!",
+        "text_btn1": "Add a post"
+    },
+    "post_view": {
+        "text1": "It is not possible to comment under this post..."
+    },
+    "addpost_view": {
         "title": "Create a post",
         "image": "Add an image",
         "place": "Place",
-        "caption": "Caption"
+        "caption": "Caption",
+        "place_placeholder": "Place",
+        "caption_placeholder": "Caption",
+        "text1": "Disable comments"
+    },
+    "addcomment_view": {
+        "add_comment": "Add a comment"
     }
 }

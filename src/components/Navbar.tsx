@@ -64,22 +64,22 @@ const Navbar = () => {
             {/* HOME */}
             <Link to="/feed" onClick={handleMenuToggle} className="flex items-center gap-3">
               <FontAwesomeIcon className="text-[24px]" icon={faHome} />
-              <p className="text-start">Home</p>
+              <p className="text-start">{t('menu.home')}</p>
             </Link>
             {/* DISCOVER */}
             <Link to="/discover" onClick={handleMenuToggle} className="flex items-center gap-3">
               <FontAwesomeIcon className="text-[24px]" icon={faCompass} />
-              <p className="text-start">Discover</p>
+              <p className="text-start">{t('menu.discover')}</p>
             </Link>
             {/* ADD PICS */}
             <Link to="/addpost" onClick={handleMenuToggle} className="flex items-center gap-3">
               <FontAwesomeIcon className="text-[24px]" icon={faSquarePlus} />
-              <p className="text-start">Ajouter un post</p>
+              <p className="text-start">{t('menu.add_post')}</p>
             </Link>
             {/* PROFIL */}
             <Link to="/profile" onClick={handleMenuToggle} className="flex items-center gap-3">
               <FontAwesomeIcon className="text-[24px]" icon={faCircleUser} />
-              <p className="text-start">Mon profile</p>
+              <p className="text-start">{t('menu.my_profile')}</p>
             </Link>
             {/* LIGHT/DARK MODE TOGGLE */}
             <button onClick={handleDarkModeToggle} className="flex items-center gap-3">

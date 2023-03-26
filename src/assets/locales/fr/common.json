@@ -4,15 +4,56 @@
         "french": "français",
         "english": "anglais"
     },
-    "actions": {
-        "follow": "suivre",
-        "send": "envoyer",
-        "cancel": "annuler"
+    "menu": {
+        "home": "Accueil",
+        "discover": "Discover",
+        "add_post": "Ajouter un post",
+        "my_profile": "Mon profil"
     },
-    "addpost": {
+    "actions": {
+        "follow": "Suivre",
+        "unfollow": "Ne plus suivre",
+        "send": "envoyer",
+        "cancel": "annuler",
+        "delete": "Supprimer",
+        "publish": "Publier",
+        "logout": "Se déconnecter",
+        "see_post": "Voir la publication",
+        "copy_link": "Copier le lien"
+    },
+    "feed_view": {
+        "text1": "Vous avez tout vu\u00A0!",
+        "text2": "Votre feed est vide...",
+        "text3": "Vous devriez suivre des utilisateurs pour remplir votre feed\u00A0!",
+        "text_btn1": "Découvrir des posts"
+    },
+    "discover_view": {
+        "text1": "Votre discover est vide...",
+        "text2": "Ajouter un post pour remplir votre discover\u00A0!",
+        "text_btn1": "Ajouter un post"
+    },
+    "profile_view": {
+        "my_account": "Mon compte",
+        "posts": "posts",
+        "followers": "followers",
+        "follows": "follows",
+        "text1": "Vous n'avez pas encore publié de photos...",
+        "text2": "Ajouter un post pour remplir votre profil\u00A0!",
+        "text_btn1": "Ajouter un post"
+    },
+    "post_view": {
+        "text1": "Il n'est pas possible de commenter sous ce post..."
+    },
+    "addpost_view": {
         "title": "Créer un post",
         "image": "Ajouter une image",
         "place": "Lieu",
-        "caption": "Description"
+        "caption": "Description",
+        "place_placeholder": "Lieu",
+        "caption_placeholder": "Description",
+        "text1": "Désactiver les commentaires"
+    },
+    "addcomment_view": {
+        "add_comment": "Ajouter un commentaire"
     }
 }

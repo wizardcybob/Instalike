@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { Instalike } from '@jmetterrothan/instalike';
 import { Media } from '@jmetterrothan/instalike/dist/types/Instalike';
 
+// LANGUAGE
+import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
+import Language from '../assets/enums/Language';
+
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
@@ -39,6 +44,7 @@ type PostProps = {
 
 
 const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed, comment_able }: PostProps) => {
+  const { t,i18n } = useTranslation();
   const dispatch = useAppDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [navigateToPost, setnavigateToPost] = useState(false);
@@ -61,17 +67,17 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
           <div className="flex items-center gap-4">
             <div>
               <div className="bg-gray-400 flex items-center justify-center rounded-full overflow-hidden w-12 h-12">
-                  {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
-                  <p className="uppercase text-white text-xl">{username.charAt(0)}</p>
+                {/* <img src="/src/assets/images/pp_user.png" alt="" /> */}
+                <p className="uppercase text-white text-xl">{username.charAt(0)}</p>
               </div>
             </div>
               <div>
                   <p className="font-bold">{username}</p>
                   {location &&
-                      <div className="flex items-center gap-1">
-                          <FontAwesomeIcon className="text-[14px]" icon={faLocationDot} />
-                          <p className="text-sm mt-[2px]">{location}, {time_post}</p>
-                      </div>
+                    <div className="flex items-center gap-1">
+                        <FontAwesomeIcon className="text-[14px]" icon={faLocationDot} />
+                        <p className="text-sm mt-[2px]">{location}, {time_post}</p>
+                    </div>
                   }
               </div>
               {/* btn follow */}
@@ -82,7 +88,7 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
                     } else {
                       dispatch(followUserPostAsync(post.owner.id));
                     }
-                  }}>follow</button>
+                  }}>{t('actions.follow')}</button>
               )}
           </div>
           <div className="relative">
@@ -101,7 +107,7 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
                         window.history.go(-1); return false;
                       }}
                     >
-                      Supprimer
+                      {t('actions.delete')}
                     </button>
                   )}
                   {/* FOLLOW / UNFOLLOW */}
@@ -115,7 +121,7 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
                         }
                       }}
                     >
-                      Unfollow
+                      {t('actions.unfollow')}
                     </button>
                     ) : (
                     <button className="hover:bg-gray-200 p-2 dark:hover:bg-gray-700 font-bold text-blue-500 w-full text-left"
@@ -127,20 +133,20 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
                           }
                         }}
                     >
-                      Follow
+                      {t('actions.follow')}
                     </button>
                   ))}
                   {/* SEE PUBLICATION */}
                   {inFeed &&
                     <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left">
-                      <Link to={`/post/${postid}`}>Voir la publication</Link>
+                      <Link to={`/post/${postid}`}>{t('actions.see_post')}</Link>
                     </button>
                   }
                   {/* COPY LINK */}
                   <button className="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 w-full text-left" onClick={() => {
                         copyLink(window.location.origin.toString() + '/post/' + postid);
                       }}
-                  >Copier le lien</button>
+                  >{t('actions.copy_link')}</button>
               </div>
           </div>
 
@@ -182,7 +188,7 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
       {/* ADD COMMENT */}
       {comment_able ? (
       <div className="p-4">
-        <p className="italic text-center text-sm">Il n'est pas possible de commenter sous ce post...</p>
+        <p className="italic text-center text-sm">{t('post_view.text1')}</p>
       </div>
       ) : (
       <div>

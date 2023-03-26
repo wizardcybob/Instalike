@@ -21,7 +21,7 @@ export const calculateTime = (createdAt: string): string => {
     } else if (diffMinutes < 60) {
       return diffMinutes === 1 ? `${diffMinutes} minute ago` : `${diffMinutes} minutes ago`;
     } else if (diffHours < 24) {
-      return diffHours === 1 ? `${diffHours} heure ago` : `${diffHours} heures ago`;
+      return diffHours === 1 ? `${diffHours} heure ago` : `${diffHours} hours ago`;
     } else {
       return diffDays === 1 ? `${diffDays} day ago` : `${diffDays} days ago`;
     }

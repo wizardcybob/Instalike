@@ -3,6 +3,10 @@ import { Instalike } from '@jmetterrothan/instalike';
 import instalikeApi from '../instalikeApi';
 import { Link } from 'react-router-dom';
 
+// LANGUAGE
+import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
+import Language from '../assets/enums/Language';
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,6 +28,7 @@ import { fetchSuggestionAsync } from '../redux/suggestion/thunks';
 
 
 const FeedView = () => {
+    const { t,i18n } = useTranslation();
     const dispatch = useAppDispatch();
 
     // useEffect(() => {
@@ -86,15 +91,15 @@ return <>
                         ></Post>
                     );
                 })}
-                <p className="font-bold text-center">Vous avez tout vu&nbsp;! / You are all caught up&nbsp;!</p>
+                <p className="font-bold text-center">{t('feed_view.text1')}</p>
             </div>
         ) : (
             <div className="flex flex-col items-center gap-4 mt-20">
                 <FontAwesomeIcon className="text-[96px]" icon={faHouse} />
-                <p className="font-bold text-xl text-center">Votre feed est vide...</p>
-                <p className="text-center">Vous devriez suivre des utilisateurs pour remplir votre feed&nbsp;!</p>
+                <p className="font-bold text-xl text-center">{t('feed_view.text2')}</p>
+                <p className="text-center">{t('feed_view.text3')}</p>
                 <button className="bg-gray-400 hover:bg-gray-600 text-white font-bold h-10 rounded-md py-2 px-4">
-                  <Link to="/discover">Découvrir des posts</Link>
+                  <Link to="/discover">{t('feed_view.text_btn1')}</Link>
                 </button>
             </div>
         )}

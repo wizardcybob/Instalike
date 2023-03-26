@@ -55,23 +55,23 @@ return <>
                 {/* INFOS COMPTE */}
                 <div className="flex flex-col gap-[30px] sm:gap-4">
                     <div className="flex gap-5 justify-center items-center">
-                        <p className="text-xl">Chloé</p>
+                        <p className="text-xl">{t('profile_view.my_account')}</p>
                         <button className="bg-red-600 hover:bg-red-800 text-white font-bold h-10 rounded-md py-2 px-4" onClick={() => {
                             dispatch(logoutAsync());
-                            }}>Se déconnecter</button>
+                            }}>{t('actions.logout')}</button>
                     </div>
                     <div className="flex gap-10">
                         <div className="flex flex-col items-center">
                             <p>XX</p>
-                            <p>posts</p>
+                            <p>{t('profile_view.posts')}</p>
                         </div>
                         <div className="flex flex-col items-center">
                             <p>XX</p>
-                            <p>followers</p>
+                            <p>{t('profile_view.followers')}</p>
                         </div>
                         <div className="flex flex-col items-center">
                             <p>XX</p>
-                            <p>follow</p>
+                            <p>{t('profile_view.follows')}</p>
                         </div>
                     </div>
                 </div>
@@ -116,13 +116,14 @@ return <>
                         );
                     })}
                 </div>
+                
                 ) : (
                     <div className="flex flex-col items-center gap-4 mt-20">
                         <FontAwesomeIcon className="text-[96px]" icon={faCompass} />
-                        <p className="font-bold text-xl text-center">Votre discover est vide...</p>
-                        <p className="text-center">Ajouter un post pour remplir votre discover&nbsp;!</p>
+                        <p className="font-bold text-xl text-center">{t('profile_view.text1')}</p>
+                        <p className="text-center">{t('profile_view.text2')}</p>
                         <button className="bg-gray-400 hover:bg-gray-600 text-white font-bold h-10 rounded-md py-2 px-4">
-                        <Link to="/addpost">Ajouter un post</Link>
+                        <Link to="/addpost">{t('profile_view.text_btn1')}</Link>
                         </button>
                     </div>
                 )}

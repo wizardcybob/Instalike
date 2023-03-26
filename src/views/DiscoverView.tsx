@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { Instalike } from '@jmetterrothan/instalike';
 import instalikeApi from '../instalikeApi';
 
+// LANGUAGE
+import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
+import Language from '../assets/enums/Language';
 
 // COMPOSANTS
 import Navbar from '../components/Navbar';
@@ -19,6 +23,7 @@ import { faCompass } from '@fortawesome/free-regular-svg-icons';
 
 
 const DiscoverView = () => {
+  const { t,i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
   // useEffect(() => {
@@ -60,10 +65,10 @@ return <>
       ) : (
         <div className="flex flex-col items-center gap-4 mt-20">
             <FontAwesomeIcon className="text-[96px]" icon={faCompass} />
-            <p className="font-bold text-xl text-center">Votre discover est vide...</p>
-            <p className="text-center">Ajouter un post pour remplir votre discover&nbsp;!</p>
+            <p className="font-bold text-xl text-center">{t('discover_view.text1')}</p>
+            <p className="text-center">{t('discover_view.text2')}</p>
             <button className="bg-gray-400 hover:bg-gray-600 text-white font-bold h-10 rounded-md py-2 px-4">
-              <Link to="/addpost">Ajouter un post</Link>
+              <Link to="/addpost">{t('discover_view.text_btn1')}</Link>
             </button>
         </div>
       )}
