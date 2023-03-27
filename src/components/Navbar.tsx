@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// LANGUAGE
+import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
+import Language from '../assets/enums/Language';
+
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faCompass, faSquarePlus, faCircleUser, faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 
 const Navbar = () => {
+  const { t,i18n } = useTranslation();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
