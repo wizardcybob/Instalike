@@ -81,7 +81,6 @@ return <>
                         username={post.owner.userName}
                         location={post.location}
                         time_post={calculateTime(post.createdAt)}
-                        img={post.resources[0]}
                         caption={post.caption}
                         isLiked={post.viewerHasLiked}
                         likes={post.likesCount}
