@@ -2,17 +2,49 @@ import { Instalike } from '@jmetterrothan/instalike';
 import { Reducer } from 'redux';
 
 import { PostAction, SET_POST, DELETE_POST, COMMENT_POST } from './actions';
-import { SetLikeFeedAction, SetUnlikeFeedAction, LIKE_POST_FEED, UNLIKE_POST_FEED, UNFOLLOW_USER_FEED, FOLLOW_USER_FEED } from '../feed/actions'
+import { SetLikeFeedAction, SetUnlikeFeedAction, LIKE_POST_FEED, UNLIKE_POST_FEED, UNFOLLOW_USER_FEED, FOLLOW_USER_FEED, unfollowUserFeedAction, followUserFeedAction } from '../feed/actions'
 
 type PostState = {
-  data?: Instalike.Post;
+  data: Instalike.Post;
 };
 
 const intialState: PostState = {
-  data: undefined,
+  data: {
+    id: -1,
+    caption: '',
+    accessibilityCaption: '',
+    location: '',
+    resources: [],
+    hasCommentsDisabled: false,
+    likesCount: 0,
+    previewLikes: [],
+    commentsCount: 0,
+    previewComments: [],
+    viewerHasLiked: false,
+    resourceType: 'Post',
+    createdAt: '',
+    owner: {
+      resourceType: 'User',
+      userName: '',
+      firstName: '',
+      lastName: '',
+      id: -1,
+      createdAt: '',
+      fullName: '',
+      avatar: '',
+      email: '',
+      biography: '',
+      followersCount: -1,
+      followingCount: -1,
+      postsCount: -1,
+      isFollowedByViewer: false,
+      isViewer: false,
+      updatedAt: '',
+    },
+  },
 };
 
-const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlikeFeedAction > = (state = intialState, action) => {
+const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlikeFeedAction | unfollowUserFeedAction | followUserFeedAction > = (state = intialState, action) => {
   switch (action.type) {
     case SET_POST:
       return { ...state, data: action.payload };

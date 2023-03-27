@@ -31,7 +31,6 @@ type PostProps = {
     username: string;
     location: string | null;
     time_post: string | null;
-    img: Media;
     caption?: string;
     isLiked: boolean;
     likes: number;
@@ -43,7 +42,7 @@ type PostProps = {
 
 
 
-const Post = ({ post, postid, username, location, time_post, img, caption, isLiked, likes, comments, comment_post, inFeed, comment_able }: PostProps) => {
+const Post = ({ post, postid, username, location, time_post, caption, isLiked, likes, comments, comment_post, inFeed, comment_able }: PostProps) => {
   const { t,i18n } = useTranslation();
   const dispatch = useAppDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -58,6 +57,7 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
       return document.execCommand('copy', true, text);
     }
   }
+  console.log(post)
 
   return <>
   {/* A POST */}
@@ -153,7 +153,9 @@ const Post = ({ post, postid, username, location, time_post, img, caption, isLik
       </div>
       {/* IMAGE POST */}
       <div className="flex justify-center items-center">
-          <img src={img.src} alt="" />
+        {post.resources[0] &&
+          <img src={post.resources[0].src} alt="" />
+        }
       </div>
       {/* BIO POST */}
       <div className="p-4">
