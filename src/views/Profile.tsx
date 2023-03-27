@@ -13,12 +13,13 @@ import DiscoverPost from '../components/DiscoverPost';
 // AUTRES FICHIERS
 import useAppDispatch from '../hooks/useAppDispatch';
 import useFeedItems from '../hooks/useFeedItems';
-import { fetchProfileAsync, fetchProfileDataAsync } from '../redux/feed/thunks';
+import { fetchProfileAsync } from '../redux/feed/thunks';
 
 // ICONS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass } from '@fortawesome/free-regular-svg-icons';
 import { useEffect } from 'react';
+import { Instalike } from '@jmetterrothan/instalike';
 
 
 const Profile = () => {
@@ -31,10 +32,6 @@ const Profile = () => {
     }, []);
 
     const feedItems = useFeedItems();
-
-    // console.log("Before calling fetchProfileDataAsync");
-    //dispatch(fetchProfileDataAsync());
-    // console.log("After calling fetchProfileDataAsync");
 
 
 

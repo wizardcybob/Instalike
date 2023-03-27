@@ -21,6 +21,7 @@ const AddPostView = () => {
     const [selectedImg, setSelectedImg] = useState<File[]>([]);
     const [location, setLocation] = useState("");
     const [caption, setCaption] = useState("");
+    const [accessibilityCaption, setAccessibilityCaption] = useState("");
     const [hasCommentsDisabled, setComment] = useState(false);
     const [redirect, setRedirect] = useState(false);
     const post = usePost().items || { id: -1 }; // Initialisation de post avec un objet par défaut
@@ -45,7 +46,7 @@ const AddPostView = () => {
                 <p className="text-center font-bold text-2xl">{t('addpost_view.title')}</p>
                 <form className="flex flex-col gap-4 mt-6" onSubmit={(event)=> {
                     event.preventDefault();
-                    dispatch(addPost(selectedImg, location, caption, hasCommentsDisabled)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
+                    dispatch(addPost(selectedImg, location, caption, accessibilityCaption, hasCommentsDisabled)); //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
                 }}>
                     {/* IMAGE */}
                     <div className="flex flex-col gap-1">
@@ -60,13 +61,13 @@ const AddPostView = () => {
                     {/* LOCATION */}
                     <div className="flex flex-col gap-1">
                         <label htmlFor="location-input" className="font-bold">{t('addpost_view.place')} :</label>
-                        <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="location-input" placeholder={t('addpost_view.place_placeholder')} value={location} onChange={(e)=>
+                        <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="location-input" placeholder="Place" value={location} onChange={(e)=>
                         setLocation(e.target.value)} />
                     </div>
                     {/* DESCRIPTION */}
                     <div className="flex flex-col gap-1">
                         <label htmlFor="caption-input" className="font-bold">{t('addpost_view.caption')} :</label>
-                        <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="caption-input" placeholder={t('addpost_view.caption_placeholder')} value={caption} onChange={(e)=>
+                        <input className="h-10 p-2 rounded-sm border dark:text-darkblue" id="caption-input" placeholder="Caption" value={caption} onChange={(e)=>
                         setCaption(e.target.value)} />
                     </div>
                     {/* POSSIBILITE DE COMMENTER */}

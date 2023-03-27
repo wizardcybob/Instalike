@@ -12,7 +12,7 @@ const intialState: PostState = {
   data: undefined,
 };
 
-const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlikeFeedAction | unfollowUserFeedAction | followUserFeedAction | commentPostAction> = (state = intialState, action) => {
+const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlikeFeedAction > = (state = intialState, action) => {
   switch (action.type) {
     case SET_POST:
       return { ...state, data: action.payload };
@@ -40,7 +40,7 @@ const postReducer: Reducer<PostState, PostAction | SetLikeFeedAction | SetUnlike
       return { ...state, data: { ...state.data, id: -1 } };
     case COMMENT_POST:
       if (state.data) {
-        return { ...state, previewComments: state.data.previewComments.push(action.payload), };
+        return { ...state, previewComments: state.data.previewComments };
       }
       return state;  
     default:

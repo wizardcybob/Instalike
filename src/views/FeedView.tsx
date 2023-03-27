@@ -88,6 +88,7 @@ return <>
                         comments={post.commentsCount}
                         comment_post={post.previewComments}
                         inFeed={true}
+                        comment_able={post.hasCommentsDisabled}
                         ></Post>
                     );
                 })}

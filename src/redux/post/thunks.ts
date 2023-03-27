@@ -3,7 +3,7 @@ import { data } from 'autoprefixer';
 
 // AUTRES FICHIERS
 import { AppThunkAction } from '../types';
-import { failurePostAction, loadPostAction, setPost, sucessPostAction, followUserPostAction, unfollowUserPostAction, postCommentAction } from './actions';
+import { failurePostAction, loadPostAction, setPost, sucessPostAction, followUserPostAction, unfollowUserPostAction, postCommentAction, deletePostAction } from './actions';
 
 
 // Calcul temps de publication d'un post / commentaire
@@ -48,13 +48,14 @@ export const fetchPost = (postid: number): AppThunkAction<Promise<void>> => {
 
 
 // Ajouter un post
-export const addPost = (resources: File[], location: string, caption: string, hasCommentsDisabled: boolean): AppThunkAction<Promise<void>> => { //ajouter les autres éléments (accessibilityCaption, hasCommentsDisabled) ?
+export const addPost = (resources: File[], location: string, caption: string, accessibilityCaption: string, hasCommentsDisabled: boolean): AppThunkAction<Promise<void>> => {
   return async (dispatch, getState, api) => {
     try { //laisser le try/catch wrapper sinon bug
       const { data } = await api.posts.create({
         resources: resources,
         location: location,
         caption: caption,
+        accessibilityCaption: accessibilityCaption,
         hasCommentsDisabled: hasCommentsDisabled,
       });
       dispatch(setPost(data));

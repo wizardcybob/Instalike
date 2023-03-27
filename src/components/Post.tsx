@@ -16,7 +16,7 @@ import { faLocationDot, faHeart, faCommentDots, faEllipsisVertical } from '@fort
 import useAppDispatch from '../hooks/useAppDispatch';
 import { likepostAsync, unlikePostAsync, followUserFeedAsync, unfollowUserFeedAsync } from '../redux/feed/thunks';
 import { followUserPostAction } from '../redux/post/actions';
-import { addLikePostAsync, deleteLikePostAsync, followUserPostAsync, unfollowUserPostAsync, deletePostAsync } from '../redux/post/thunks';
+import { followUserPostAsync, unfollowUserPostAsync, deletePostAsync } from '../redux/post/thunks';
   
 
 
