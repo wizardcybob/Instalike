@@ -40,6 +40,9 @@ const AddComment = ({ idPost }: commentProps) => {
           onClick={() => {
             dispatch(postNewCommentAsync(comment, idPost));
             setComment('');
+            setTimeout(() => {
+              window.location.reload();
+            }, 700);
           }}
         >
           <div className="bg-gray-500 text-white font-bold h-10 rounded-md flex items-center px-4">{t('actions.publish')}</div>

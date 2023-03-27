@@ -57,7 +57,6 @@ const Post = ({ post, postid, username, location, time_post, caption, isLiked, l
       return document.execCommand('copy', true, text);
     }
   }
-  console.log(post)
 
   return <>
   {/* A POST */}

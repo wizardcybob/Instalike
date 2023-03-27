@@ -90,7 +90,7 @@ const AddPostView = () => {
                 </form>
 
                 {redirect &&
-                <Navigate to={'post/' + post.id} replace={true} />}
+                <Navigate to={'/post/' + post.id} replace={true} />}
             </div>
         </div>
 
