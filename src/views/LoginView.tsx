@@ -33,7 +33,7 @@ const LoginView = () => {
                 <input id="password" className="px-4 bg-gray-200 h-12 rounded-md" type="password" name="password" placeholder="Mot de passe" required onChange={(e) => {
               setPassword(e.target.value);
             }}></input>
-                <button type="submit" className="bg-blue-400 text-white font-bold h-10 rounded-md mt-2">Login</button>
+                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold h-10 rounded-md mt-2">Login</button>
             </form>
         </div>
     </>;

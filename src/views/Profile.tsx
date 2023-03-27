@@ -75,7 +75,7 @@ return <>
             </div>
             {/* CHANGEMENT DE LANGUE */}
             <div className="flex flew-wrap gap-10 mt-10">
-                <button className="bg-blue-500 text-white font-bold h-10 rounded-md py-2 px-4"
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold h-10 rounded-md py-2 px-4"
                 type="button"
                 onClick={() => {
                     i18n.changeLanguage(Language.EN);
@@ -83,7 +83,7 @@ return <>
                 >
                     {t('languages.english')}
                 </button>
-                <button className="bg-blue-500 text-white font-bold h-10 rounded-md py-2 px-4"
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold h-10 rounded-md py-2 px-4"
                 type="button"
                 onClick={() => {
                     i18n.changeLanguage(Language.FR);
