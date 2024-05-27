@@ -35,6 +35,9 @@ const LoginView = () => {
             }}></input>
                 <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold h-10 rounded-md mt-2">Login</button>
             </form>
+            <p className="text-xs italic mt-4 underline text-blue-500">Etape 1 : <a href="https://git.unistra.fr/j.metterrothan/instalike-api" rel="noreferrer" target="_blank">Déployer l'API corrspondante pour lancer Instalike</a></p>
+            <p className="text-xs italic mt-1">Etape 2 : Me contacter pour obtenir les identifiants</p>
+            <p className="text-xs italic mt-1">Etape 3 : Apprécier le projet !</p>
         </div>
     </>;
 };
